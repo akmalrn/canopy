@@ -62,7 +62,7 @@
                                     <tbody>
                                         @foreach ($blogs as $blog)
                                             <tr>
-                                                <td><img src="{{ asset('/uploads/blogs/' . $blog->path) }}"
+                                                <td><img src="{{ asset($blog->path) }}"
                                                         alt="{{ $blog->title }}" style="width: 100px"></td>
                                                 <td>{{ $blog->category->category }}</td>
                                                 <td>{{ $blog->title }}</td>

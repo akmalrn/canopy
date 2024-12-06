@@ -35,7 +35,7 @@
                             <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-md-6">
                                         <div class="form-group form-group-default">
                                             <label for="category_id">Category</label>
                                             <select id="category_id" name="category_id"
@@ -46,22 +46,6 @@
                                                 @endforeach
                                             </select>
                                             @error('category_id')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="form-group form-group-default">
-                                            <label for="type_id">Type</label>
-                                            <select id="type_id" name="type_id"
-                                                class="form-control @error('type_id') is-invalid @enderror" required>
-                                                <option value="">Select Type</option>
-                                                @foreach ($typeservices as $type)
-                                                    <option value="{{ $type->id }}">{{ $type->title }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('type_id')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -94,7 +78,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col">
                                         <div class="form-group form-group-default">
                                             <label for="description">Description</label>
                                             <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description"
@@ -106,7 +90,22 @@
                                     </div>
                                 </div>
 
-                                <!-- Dropdown untuk memilih kategori -->
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group form-group-default">
+                                            <label for="paths">Paths</label>
+                                            <div class="input-group mb-3">
+                                                <div id="paths-container" class="d-flex align-items-center">
+                                                    <input type="file" name="paths[]" class="form-control" required>
+                                                    <button type="button" class="btn btn-success add-path ms-2">+</button>
+                                                </div>
+                                            </div>
+                                            @error('paths')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 <div class="d-flex justify-content-end mt-4">
@@ -120,4 +119,32 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pathsContainer = document.getElementById('paths-container');
+
+            // Fungsi untuk menambah field path
+            document.addEventListener('click', function(e) {
+                // Menambahkan field input file
+                if (e.target.classList.contains('add-path')) {
+                    e.preventDefault();
+
+                    const newInputGroup = document.createElement('div');
+                    newInputGroup.className = 'input-group mb-3';
+
+                    newInputGroup.innerHTML = `
+                <input type="file" name="paths[]" class="form-control" required>
+                <button type="button" class="btn btn-danger remove-path">-</button>
+            `;
+
+                    pathsContainer.appendChild(newInputGroup);
+                }
+
+                // Hapus field path
+                if (e.target.classList.contains('remove-path')) {
+                    e.target.closest('.input-group').remove();
+                }
+            });
+        });
+    </script>
 @endsection

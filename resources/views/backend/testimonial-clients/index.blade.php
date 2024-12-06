@@ -60,7 +60,7 @@
                                     <tbody>
                                         @foreach ($testimonialClients as $testimonialClient)
                                             <tr>
-                                                <td><img src="{{ asset('/uploads/testimonialClients/' . $testimonialClient->path) }}"
+                                                <td><img src="{{ asset($testimonialClient->path) }}"
                                                         alt="{{ $testimonialClient->name }}" style="width: 100px"></td>
                                                 <td>{{ $testimonialClient->name }}</td>
                                                 <td>{{ Str::limit($testimonialClient->position, 50) }}</td>

@@ -16,7 +16,6 @@ class Service extends Model
         'overview',
         'description',
         'category_id',
-        'type_id'
     ];
 
     public function category()
@@ -24,8 +23,13 @@ class Service extends Model
         return $this->belongsTo(CategoryService::class);
     }
 
-    public function type()
+    public function paths()
     {
-        return $this->belongsTo(TypeService::class);
+        return $this->hasMany(ServicePath::class, 'service_id');
+    }
+
+    public function buildingServices()
+    {
+        return $this->hasMany(BuildingService::class);
     }
 }

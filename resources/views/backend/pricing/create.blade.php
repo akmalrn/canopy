@@ -35,6 +35,19 @@
                             <form action="{{ route('pricings.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label for="path">Upload Image</label>
+                                            <input type="file" name="path" id="path" class="form-control @error('path') is-invalid @enderror" onchange="previewImage('path', 'pathPreview')" required>
+                                            @error('path')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <!-- Tempat gambar pratinjau -->
+                                        <img id="pathPreview" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; width: 200px;">
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col mb-4">
                                         <div class="form-group form-group-default">
                                             <label for="title">Title</label>

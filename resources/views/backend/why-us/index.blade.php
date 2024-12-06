@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                 <div class="card">
-                    <div class="card-header bg-primary text-white">Why Us Settings</div>
+                    <div class="card-header bg-primary text-white">apartment features Settings</div>
 
                     <div class="card-body">
                         <form action="{{ route('why-us.store') }}" method="POST" enctype="multipart/form-data">
@@ -34,7 +34,7 @@
                                     <img id="pathPreview" src="#" alt="Image Preview" class="img-thumbnail mt-2"
                                         style="display: none; width: 50px;">
                                     @if (!empty($whyus) && !empty($whyus->path))
-                                        <img src="{{ asset('uploads/whyus/' . $whyus->path) }}" alt="Why Us"
+                                        <img src="{{ asset($whyus->path) }}" alt="Why Us"
                                             class="img-fluid rounded shadow">
                                     @else
                                         <!-- Tidak ada gambar untuk ditampilkan -->

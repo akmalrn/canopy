@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('testimonial_client', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
+            $table->string('path')->nullable();
             $table->string('name');
             $table->string('position');
             $table->text('description');

@@ -2,7 +2,7 @@
 @section('content')
     <!--Page Header Start-->
     <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+        <div class="page-header-bg" style="background-image: url({{ asset('assetsfront/images/backgrounds/type.jpeg') }})">
         </div>
         <div class="container">
             <div class="page-header__inner">

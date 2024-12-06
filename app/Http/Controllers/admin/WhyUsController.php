@@ -23,7 +23,9 @@ class WhyUsController extends Controller
             'overview' => 'nullable|string',
         ]);
 
-        $imageName = null;
+        $existingData = WhyUs::find(1);
+
+        $imageName = $existingData ? $existingData->path : null;
 
         if ($request->hasFile('path')) {
             $file = $request->file('path');
@@ -37,7 +39,6 @@ class WhyUsController extends Controller
             'overview' => $request->input('overview'),
             'path' => $imageName,
         ];
-
 
         WhyUs::updateOrCreate(
             ['id' => 1],

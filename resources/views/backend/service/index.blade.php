@@ -60,7 +60,6 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Type</th>
                                             <th>Title</th>
                                             <th>Overview</th>
                                             <th>Description</th>
@@ -69,7 +68,6 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Jenis</th>
                                             <th>Judul</th>
                                             <th>Ringkasan</th>
                                             <th>Deskripsi</th>
@@ -78,7 +76,6 @@
                                     <tbody>
                                         @foreach ($services as $service)
                                             <tr>
-                                                <td>{{ $service->type->title }}</td>
                                                 <td>{{ $service->title }}</td>
                                                 <td>{{ $service->overview }}</td>
                                                 <td>{!! Str::limit($service->description, 50) !!}</td>
@@ -147,7 +144,7 @@
                                     <tbody>
                                         @foreach ($categoryservices as $category)
                                             <tr>
-                                                <td> <img src="{{ asset('uploads/services/' . $category->path) }}"
+                                                <td> <img src="{{ asset($category->path) }}"
                                                     alt="{{ $category->category }}"
                                                     class="img-fluid rounded"
                                                     style="max-width: 100px; height: auto;"></td>

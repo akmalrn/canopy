@@ -1,17 +1,18 @@
 @extends('frontend.layouts')
+@section('title', 'Blog')
 @section('content')
      <!--Page Header Start-->
      <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+        <div class="page-header-bg" style="background-image: url({{ asset('assetsfront/images/backgrounds/blog.jpg') }})">
         </div>
         <div class="container">
             <div class="page-header__inner">
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('index') }}">Beranda</a></li>
                     <li><span>/</span></li>
-                    <li>News</li>
+                    <li>Blog</li>
                 </ul>
-                <h2>Latest news</h2>
+                <h2>Blog Terbaru</h2>
             </div>
         </div>
     </section>
@@ -21,156 +22,40 @@
     <section class="news-page">
         <div class="container">
             <div class="row">
-                <!--News One Single Start-->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                    <div class="news-one__single">
-                        <div class="news-one__img">
-                            <img src="assets/images/blog/news-1-1.jpg" alt="">
-                        </div>
-                        <div class="news-one__content-box">
-                            <div class="news-one__date">
-                                <p>18 april</p>
-                            </div>
-                            <div class="news-one__content">
-                                <p class="news-one__author">by John Smith</p>
-                                <h3 class="news-one__title"><a href="news-details.html">Let’s understand the
-                                        different types of luxury spaces</a></h3>
-                            </div>
-                            <div class="news-one__bottom">
-                                <a href="news-details.html" class="news-one__more"> <i
-                                        class="fa fa-arrow-right"></i> Read More</a>
-                                <a href="news-details.html" class="news-one__comments"> <i
-                                        class="fas fa-comments"></i> 2 Comments</a>
-                            </div>
-                        </div>
+                <!-- Cek jika ada blog yang ditemukan -->
+                @if($blogs->isEmpty())
+                    <div class="col-12">
+                        <p>Blog Tidak Ditemukan</p>
                     </div>
-                </div>
-                <!--News One Single End-->
-                <!--News One Single Start-->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                    <div class="news-one__single">
-                        <div class="news-one__img">
-                            <img src="assets/images/blog/news-1-2.jpg" alt="">
-                        </div>
-                        <div class="news-one__content-box">
-                            <div class="news-one__date">
-                                <p>18 april</p>
-                            </div>
-                            <div class="news-one__content">
-                                <p class="news-one__author">by John Smith</p>
-                                <h3 class="news-one__title"><a href="news-details.html">Lorem Ipsum has been the
-                                        industry's standard dummy</a></h3>
-                            </div>
-                            <div class="news-one__bottom">
-                                <a href="news-details.html" class="news-one__more"> <i
-                                        class="fa fa-arrow-right"></i> Read More</a>
-                                <a href="news-details.html" class="news-one__comments"> <i
-                                        class="fas fa-comments"></i> 2 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--News One Single End-->
-                <!--News One Single Start-->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="news-one__single">
-                        <div class="news-one__img">
-                            <img src="assets/images/blog/news-1-3.jpg" alt="">
-                        </div>
-                        <div class="news-one__content-box">
-                            <div class="news-one__date">
-                                <p>18 april</p>
-                            </div>
-                            <div class="news-one__content">
-                                <p class="news-one__author">by John Smith</p>
-                                <h3 class="news-one__title"><a href="news-details.html">The point of using Lorem
-                                        Ipsum is that it has a more</a></h3>
-                            </div>
-                            <div class="news-one__bottom">
-                                <a href="news-details.html" class="news-one__more"> <i
-                                        class="fa fa-arrow-right"></i> Read More</a>
-                                <a href="news-details.html" class="news-one__comments"> <i
-                                        class="fas fa-comments"></i> 2 Comments</a>
+                @else
+                    <!-- News One Single Start -->
+                    @foreach ($blogs as $blog)
+                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="news-one__single">
+                                <div class="news-one__img">
+                                    <img src="{{ asset($blog->path) }}" alt="{{ $blog->title }}" width="500px" height="500px">
+                                </div>
+                                <div class="news-one__content-box">
+                                    <div class="news-one__date">
+                                        <p>{{ $blog->created_at }}</p>
+                                    </div>
+                                    <div class="news-one__content">
+                                        <p class="news-one__author">Admin</p>
+                                        <h3 class="news-one__title">
+                                            <a href="{{ route('blog-detail', $blog->id) }}">{{ $blog->title }}</a>
+                                        </h3>
+                                    </div>
+                                    <div class="news-one__bottom">
+                                        <a href="{{ route('blog-detail', $blog->id) }}" class="news-one__more">
+                                            <i class="fa fa-arrow-right"></i> Selengkapnya
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--News One Single End-->
-                <!--News One Single Start-->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="news-one__single">
-                        <div class="news-one__img">
-                            <img src="assets/images/blog/news-1-4.jpg" alt="">
-                        </div>
-                        <div class="news-one__content-box">
-                            <div class="news-one__date">
-                                <p>18 april</p>
-                            </div>
-                            <div class="news-one__content">
-                                <p class="news-one__author">by John Smith</p>
-                                <h3 class="news-one__title"><a href="news-details.html">Interdum et malesuada fames
-                                        ac ante ipsum</a></h3>
-                            </div>
-                            <div class="news-one__bottom">
-                                <a href="news-details.html" class="news-one__more"> <i
-                                        class="fa fa-arrow-right"></i> Read More</a>
-                                <a href="news-details.html" class="news-one__comments"> <i
-                                        class="fas fa-comments"></i> 2 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--News One Single End-->
-                <!--News One Single Start-->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="500ms">
-                    <div class="news-one__single">
-                        <div class="news-one__img">
-                            <img src="assets/images/blog/news-1-5.jpg" alt="">
-                        </div>
-                        <div class="news-one__content-box">
-                            <div class="news-one__date">
-                                <p>18 april</p>
-                            </div>
-                            <div class="news-one__content">
-                                <p class="news-one__author">by John Smith</p>
-                                <h3 class="news-one__title"><a href="news-details.html">Laoreet rhoncus, turpis
-                                        mauris scelerisque leo</a></h3>
-                            </div>
-                            <div class="news-one__bottom">
-                                <a href="news-details.html" class="news-one__more"> <i
-                                        class="fa fa-arrow-right"></i> Read More</a>
-                                <a href="news-details.html" class="news-one__comments"> <i
-                                        class="fas fa-comments"></i> 2 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--News One Single End-->
-                <!--News One Single Start-->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
-                    <div class="news-one__single">
-                        <div class="news-one__img">
-                            <img src="assets/images/blog/news-1-6.jpg" alt="">
-                        </div>
-                        <div class="news-one__content-box">
-                            <div class="news-one__date">
-                                <p>18 april</p>
-                            </div>
-                            <div class="news-one__content">
-                                <p class="news-one__author">by John Smith</p>
-                                <h3 class="news-one__title"><a href="news-details.html">Curabitur volutpat eget
-                                        mauris a consectetur.</a></h3>
-                            </div>
-                            <div class="news-one__bottom">
-                                <a href="news-details.html" class="news-one__more"> <i
-                                        class="fa fa-arrow-right"></i> Read More</a>
-                                <a href="news-details.html" class="news-one__comments"> <i
-                                        class="fas fa-comments"></i> 2 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--News One Single End-->
+                    @endforeach
+                    <!-- News One Single End -->
+                @endif
             </div>
         </div>
     </section>

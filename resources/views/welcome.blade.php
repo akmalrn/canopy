@@ -23,7 +23,7 @@
 
         .image-container {
             flex: 1;
-            background-image: url('Wan.jpg');
+            background-image: url('wan.jpg');
             background-size: cover;
             background-position: center;
         }

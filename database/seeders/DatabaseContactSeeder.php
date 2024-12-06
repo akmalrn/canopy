@@ -14,6 +14,10 @@ class DatabaseContactSeeder extends Seeder
     public function run(): void
     {
         Contact::Create([
+            'path_contact' => 'uploads/contact/path_contact.jpg',
+            'path' => 'uploads/contact/contact.jpg',
+            'name' => 'Nama',
+            'position' => 'Admin',
             'phone_number' => '6281378982024',
             'phone_number_2' => '6282299946709',
             'email_address' => 'info@areumparc.co.id',

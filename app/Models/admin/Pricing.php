@@ -12,6 +12,7 @@ class Pricing extends Model
     protected $table = 'pricing' ;
 
     protected $fillable = [
+        'path',
         'title',
         'overview',
         'description',

@@ -36,6 +36,27 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label for="path">Upload Image</label>
+                                            <!-- Input file untuk gambar baru -->
+                                            <input id="path" type="file" class="form-control @error('path') is-invalid @enderror" name="path" onchange="previewImage('path', 'pathPreview')">
+                                            @error('path')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
+                                            <!-- Pratinjau gambar lama jika ada -->
+                                            @if($pricing->path)
+                                                <div class="mt-2">
+                                                    <img src="{{ asset($pricing->path) }}" alt="Current pricing Image" class="img-thumbnail" width="200">
+                                                </div>
+                                            @endif
+                                            <!-- Tempat pratinjau gambar baru yang dipilih -->
+                                            <img id="pathPreview" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col mb-4">
                                         <div class="form-group form-group-default">
                                             <label for="title">Title</label>

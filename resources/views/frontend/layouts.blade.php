@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $configuration->title ?? '' }}</title>
+    <title>@yield('title', $configuration->title)</title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assetsfront/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($configuration->path_logo ?? '') }}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($configuration->path_logo ?? '') }}" />
 
     <link rel="manifest" href="assetsfront/images/favicons/site.webmanifest" />
-    <meta name="description" content="{{ $configuration->meta_descriptions ?? '' }} " />
-    <meta name="keywords" content="{{ $configuration->meta_keywords ?? '' }}" />
+    <meta name="description" content="{{ $blog->descriptions ?? $configuration->meta_descriptions ?? '' }}" />
+    <meta name="keywords" content="{{ $blog->keywords ?? $configuration->meta_keywords ?? '' }}" />
+
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +51,7 @@
     <style>
         .whatsapp-sidebar {
             position: fixed;
-            right: 20px;
+            left: 20px;
             bottom: 20px;
             width: 60px;
             height: 60px;
@@ -140,7 +141,7 @@
                                 <li class="dropdown {{ Route::currentRouteName() == 'index' ? 'current' : '' }}">
                                     <a href="{{ route('index') }}"> Beranda </a>
                                     <ul class="shadow-box">
-                                        <li><a href="{{ route('index') }}">Home One</a></li>
+                                        <li><a href="{{ route('index') }}">Beranda</a></li>
                                     </ul>
                                 </li>
                                 <li class="{{ Route::currentRouteName() == 'about' ? 'current' : '' }}">
@@ -149,7 +150,11 @@
                                 <li class="dropdown">
                                     <a href="#">Tipe Unit</a>
                                     <ul class="shadow-box">
-                                        <li><a href="{{ route('services') }}">Tipe Unit</a></li>
+                                        @foreach($categoryservices as $category)
+                                        <li>
+                                            <a href="{{ route('detail_service', ['category_id' => $category->id]) }}">{{ $category->category }}</a>
+                                        </li>
+                                    @endforeach
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -198,44 +203,41 @@
                             <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                                 <div class="footer-widget__column footer-widget__about">
                                     <div class="footer-widget__about-text-box">
-                                        <p class="footer-widget__about-text">Aports find out all the ways to enjoy
-                                            modern and luxury residential life around the world.</p>
+                                        <p class="footer-widget__about-text">{!! $about->description ?? '' !!}</p>
                                     </div>
                                     <div class="site-footer__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-facebook"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="{{ $contact->instagram ?? '' }}" target="blank"><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a href="{{ $contact->tiktok ?? '' }}" target="blank"><i class="fab fa-tiktok"></i></a>
+                                    <a href="{{ $contact->facebook ?? '' }}" target="blank"><i class="fab fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                                 <div class="footer-widget__column footer-widget__Explore">
                                     <div class="footer-widget__title-box">
-                                        <h3 class="footer-widget__title">Explore</h3>
+                                        <h3 class="footer-widget__title">Jelajahi</h3>
                                     </div>
                                     <ul class="footer-widget__Explore-list list-unstyled">
-                                        <li><a href="{{ route('about') }}">About</a></li>
+                                        <li><a href="{{ route('about') }}">Tentang</a></li>
+                                        <li><a href="{{ route('services') }}">Tipe Unit</a></li>
+                                        <li><a href="{{ route('promo') }}">Promo</a></li>
                                         <li><a href="{{ route('contact') }}">Contact</a></li>
-                                        <li><a href="{{ route('about') }}">Custom Widget</a></li>
-                                        <li><a href="{{ route('about') }}">Shortcodes</a></li>
-                                        <li><a href="{{ route('about') }}">Blank page</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                                 <div class="footer-widget__column footer-widget__find">
                                     <div class="footer-widget__title-box">
-                                        <h3 class="footer-widget__title">Find</h3>
+                                        <h3 class="footer-widget__title">Cari</h3>
                                     </div>
-                                    <p class="footer-widget__find-text">30 Broklyn Golden Street, New <br> York United
-                                        States of <br> America</p>
+                                    <p class="footer-widget__find-text">{{ $contact->address ?? '' }}</p>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                                 <div class="footer-widget__column footer-widget__Contact">
                                     <div class="footer-widget__title-box">
-                                        <h3 class="footer-widget__title">Contact</h3>
+                                        <h3 class="footer-widget__title">Kontak</h3>
                                     </div>
                                     <ul class="footer-widget__Contact-list list-unstyled">
                                         <li>
@@ -243,7 +245,8 @@
                                                 <span class="fas fa-phone-alt"></span>
                                             </div>
                                             <div class="text">
-                                                <p><a href="tel:23425446680">+23 425 4466 80</a></p>
+                                                <p><a href="https://wa.me/{{ $contact->phone_number ?? '' }}">+{{ $contact->phone_number ?? '' }}</a></p>
+                                                <p><a href="https://wa.me/{{ $contact->phone_number_2 ?? '' }}">+{{ $contact->phone_number_2 ?? '' }}</a></p>
                                             </div>
                                         </li>
                                         <li>
@@ -251,7 +254,7 @@
                                                 <span class="fas fa-clock"></span>
                                             </div>
                                             <div class="text">
-                                                <p>Mon - Sun: 8AM - 8PM</p>
+                                                <p>{{ $contact->hours ?? '' }}</p>
                                             </div>
                                         </li>
                                         <li>
@@ -259,7 +262,8 @@
                                                 <span class="fas fa-envelope"></span>
                                             </div>
                                             <div class="text">
-                                                <p><a href="mailto:needhelp@company.com">needhelp@company.com</a></p>
+                                                <p><a href="mailto:{{ $contact->email_address ?? '' }}">{{ $contact->email_address ?? '' }}</a></p>
+                                                <p><a href="mailto:{{ $contact->email_address_2 ?? '' }}">{{ $contact->email_address_2 ?? '' }}</a></p>
                                             </div>
                                         </li>
                                     </ul>
@@ -274,8 +278,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© All Copyright 2022 by <a
-                                        href="#">Aports.com</a>
+                                <p class="site-footer__bottom-text">{{ $configuration->footer ?? '' }}
                                 </p>
                             </div>
                         </div>
@@ -306,19 +309,19 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@packageName__.com">needhelp@agrion.com</a>
+                    <a href="mailto:{{ $contact->email_address ?? '' }}">{{ $contact->email_address ?? '' }}</a>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:666-888-0000">666 888 0000</a>
+                    <a href="https://wa.me/{{ $contact->phone_number ?? '' }}?text=Permisi+Admin" target="blank">https://wa.me/{{ $contact->phone_number ?? '' }}</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-facebook-square"></a>
-                    <a href="#" class="fab fa-pinterest-p"></a>
-                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="{{ $contact->instagram ?? '' }}" target="blank"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="{{ $contact->tiktok ?? '' }}" target="blank"><i class="fab fa-tiktok"></i></a>
+                <a href="{{ $contact->facebook ?? '' }}" target="blank"><i class="fab fa-youtube"></i></a>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 
@@ -333,9 +336,9 @@
         <div class="search-popup__overlay search-toggler"></div>
         <!-- /.search-popup__overlay -->
         <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
+            <form action="{{ route('blog.search') }}" method="GET">
+                <label for="search" class="sr-only">Search here</label>
+                <input type="text" id="search" name="search" placeholder="Search Here..." />
                 <button type="submit" aria-label="search submit" class="thm-btn">
                     <i class="icon-magnifying-glass"></i>
                 </button>

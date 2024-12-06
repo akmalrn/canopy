@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>GrahaTekno - Admin Dashboard</title>
+    <title>Wanteknologi - Admin Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="{{ asset('Wan Logo.png') }}" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -195,7 +195,7 @@
                         <li class="nav-item {{ Request::is('admin-dashboard/why-us') ? 'active' : '' }}">
                             <a href="{{ route('why-us.index') }}">
                                 <i class="fas fa-thumbs-up"></i>
-                                <p>Why Us</p>
+                                <p>apartment features</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
@@ -204,6 +204,14 @@
                             <a href="{{ route('services.index') }}">
                                 <i class="fas fa-hand-holding"></i>
                                 <p>Services</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('admin-dashboard/building-services', 'admin-dashboard/building-services/create', 'admin-dashboard/building-services/*/edit', 'admin-dashboard/categories-services/create',  'admin-dashboard/categories-services/*/edit') ? 'active' : '' }}">
+                            <a href="{{ route('building-services.index') }}">
+                                <i class="fas fa-building"></i>
+                                <p>Building Services</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
@@ -260,6 +268,14 @@
                             <a href="{{ route('our-team.index') }}">
                                 <i class="fas fa-user-friends"></i>
                                 <p>Our Team</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('admin-dashboard/our-team', 'admin-dashboard/our-team.create', 'admin-dashboard/our-team.*.edit') ? 'active' : '' }}">
+                            <a href="{{ route('messages.index') }}">
+                                <i class="fas fa-comments"></i>
+                                <p>Message</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
@@ -355,7 +371,7 @@
                                         <option value="{{ route('slider.index') }}">Slider</option>
                                         <option value="{{ route('about-us.index') }}">About Us</option>
                                         <option value="{{ route('superiority.index') }}">Superiority</option>
-                                        <option value="{{ route('why-us.index') }}">Why Us</option>
+                                        <option value="{{ route('why-us.index') }}">apartment features</option>
                                         <option value="{{ route('services.index') }}">Services</option>
                                         <option value="{{ route('gallery.index') }}">Gallery</option>
                                         <option value="{{ route('partner.index') }}">Partner</option>

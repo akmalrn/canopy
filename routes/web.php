@@ -46,6 +46,11 @@ Route::middleware(['auth'])->group(function () {
 
     //service
     Route::resource('/admin-dashboard/services', App\Http\Controllers\admin\ServiceController::class);
+
+    Route::delete('/services/{service}/delete-image/{path}', [App\Http\Controllers\admin\ServiceController::class, 'deleteImage'])->name('services.deleteImage');
+    //Building Srvc
+    Route::resource('/admin-dashboard/building-services', App\Http\Controllers\admin\BuildingServiceController::class);
+
     //area
     Route::resource('/admin-dashboard/categories-services', App\Http\Controllers\admin\CategoryServiceController::class);
     //type
@@ -73,6 +78,10 @@ Route::middleware(['auth'])->group(function () {
 
     //team
     Route::resource('/admin-dashboard/our-team', App\Http\Controllers\admin\OurTeamController::class);
+
+    //message
+    Route::get('/admin-dashboard/message', [App\Http\Controllers\admin\MessageController::class, 'index'])->name('messages.index');
+    Route::post('/admin-dashboard/delete/{id}', [App\Http\Controllers\admin\MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 Route::get('/', function () {
@@ -84,9 +93,14 @@ Route::controller(App\Http\Controllers\FrontendController::class)->group(functio
     Route::get('/about', 'about')->name('about');
     Route::get('/promo', 'promo')->name('promo');
     Route::get('/services', 'services')->name('services');
-    Route::get('/service/{id}', 'DetailService')->name('detail_service');
+    Route::get('/service/{category_id}', 'DetailService')->name('detail_service');
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{id}', 'detailblog')->name('blog-detail');
     Route::get('/contact', 'contact')->name('contact');
-    Route::get('/blogs/search', 'search')->name('blogs.search');
+    Route::get('/blogs/search', 'search')->name('blog.search');
+    Route::get('/blogs/categoryBlog{category_id}', 'categoryBlog')->name('blog.category');
+    Route::post('/message', 'store')->name('message.store');
+
+    Route::get('/not-found', 'notFound')->name('not-found');
+
 });

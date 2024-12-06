@@ -42,6 +42,7 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Image</th>
                                             <th>Title</th>
                                             <th>Overview</th>
                                             <th>Description</th>
@@ -50,6 +51,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Gambar</th>
                                             <th>Judul</th>
                                             <th>Ringkasan</th>
                                             <th>Deskripsi</th>
@@ -59,6 +61,7 @@
                                     <tbody>
                                         @foreach ($pricings as $pricing)
                                             <tr>
+                                                <td><img src="{{ asset($pricing->path) }}" alt="{{ $pricing->title }}" class="image-fluid" width="50px" height="50px"></td>
                                                 <td>{{ $pricing->title }}</td>
                                                 <td>{{ $pricing->overview }}</td>
                                                 <td>{!! Str::limit($pricing->description, 100) !!}</td>

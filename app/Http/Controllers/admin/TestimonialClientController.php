@@ -25,7 +25,7 @@ class TestimonialClientController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'required|string',
             'description' => 'required|string',
-            'path' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:8192',
+            'path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:8192',
         ]);
 
         $imageName = null;

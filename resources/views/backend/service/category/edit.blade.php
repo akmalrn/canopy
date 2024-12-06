@@ -35,26 +35,20 @@
                             <form action="{{ route('categories-services.update', $categoryservice->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
-                                <!-- Title Input -->
                                 <div class="row">
-                                    <!-- Image Input -->
                                     <div class="col-md-6 form-group">
                                         <label for="path">Image</label>
                                         <input type="file" name="path" id="path" class="form-control @error('path') is-invalid @enderror">
                                         @error('path')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-
-                                        <!-- Display Existing Image if Available -->
                                         @if ($categoryservice->path)
                                             <div class="mt-2">
-                                                <img src="{{ asset('uploads/services/'. $categoryservice->path) }}" alt="Category Image" class="img-fluid" width="150">
+                                                <img src="{{ asset($categoryservice->path) }}" alt="Category Image" class="img-fluid" width="150">
                                             </div>
                                         @endif
                                     </div>
 
-                                    <!-- Category Input -->
                                     <div class="col-md-6 form-group">
                                         <label for="category">Area</label>
                                         <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category" placeholder="Enter slider category" value="{{ old('category', $categoryservice->category) }}" required>
@@ -64,8 +58,6 @@
                                     </div>
                                 </div>
 
-
-                                <!-- Buttons -->
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                     <a href="{{ route('services.index') }}" class="btn btn-secondary ms-2">Cancel</a>
