@@ -12,20 +12,12 @@ class Contact extends Model
     protected $table = 'contact';
 
     protected $fillable = [
-        'path_contact',
-        'path',
-        'name',
-        'position',
         'phone_number',
         'phone_number_2',
         'email_address',
         'email_address_2',
         'address',
         'map',
-        'hours',
-        'instagram',
-        'tiktok',
-        'facebook',
     ];
 
 }

@@ -1,63 +1,193 @@
 @extends('frontend.layouts')
-@section('title', 'Blog')
 @section('content')
-     <!--Page Header Start-->
-     <section class="page-header">
-        <div class="page-header-bg" style="background-image: url({{ asset('assetsfront/images/backgrounds/blog.jpg') }})">
+       <!--Page Header Start-->
+       <section class="page-header">
+        <div class="page-header__bg" style="background-image: url(assetsfront/images/backgrounds/page-header-bg.jpg);">
         </div>
         <div class="container">
             <div class="page-header__inner">
-                <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="{{ route('index') }}">Beranda</a></li>
-                    <li><span>/</span></li>
-                    <li>Blog</li>
-                </ul>
-                <h2>Blog Terbaru</h2>
+                <h2>Blog</h2>
+                <div class="thm-breadcrumb__box">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.php">Home</a></li>
+                        <li><span class="icon-angle-left"></span></li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
     <!--Page Header End-->
 
-    <!--News Page Start-->
-    <section class="news-page">
+    <!--Blog Page Start-->
+    <section class="blog-page">
         <div class="container">
             <div class="row">
-                <!-- Cek jika ada blog yang ditemukan -->
-                @if($blogs->isEmpty())
-                    <div class="col-12">
-                        <p>Blog Tidak Ditemukan</p>
-                    </div>
-                @else
-                    <!-- News One Single Start -->
-                    @foreach ($blogs as $blog)
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                            <div class="news-one__single">
-                                <div class="news-one__img">
-                                    <img src="{{ asset($blog->path) }}" alt="{{ $blog->title }}" width="500px" height="500px">
-                                </div>
-                                <div class="news-one__content-box">
-                                    <div class="news-one__date">
-                                        <p>{{ $blog->created_at }}</p>
-                                    </div>
-                                    <div class="news-one__content">
-                                        <p class="news-one__author">Admin</p>
-                                        <h3 class="news-one__title">
-                                            <a href="{{ route('blog-detail', $blog->id) }}">{{ $blog->title }}</a>
-                                        </h3>
-                                    </div>
-                                    <div class="news-one__bottom">
-                                        <a href="{{ route('blog-detail', $blog->id) }}" class="news-one__more">
-                                            <i class="fa fa-arrow-right"></i> Selengkapnya
-                                        </a>
-                                    </div>
-                                </div>
+                <!--Blog One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="100ms">
+                    <div class="blog-one__single">
+                        <div class="blog-one__img-box">
+                            <div class="blog-one__img">
+                                <img src="assetsfront/images/blog/blog-1-1.jpg" alt="">
                             </div>
                         </div>
-                    @endforeach
-                    <!-- News One Single End -->
-                @endif
+                        <div class="blog-one__content">
+                            <ul class="blog-one__meta list-unstyled">
+                                <li>
+                                    <a href="#"><span class="icon-user"></span>By admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-callender"></span>23 December 2023</a>
+                                </li>
+                            </ul>
+                            <h3 class="blog-one__title"><a href="blog-details.php">Trust the experts for all your
+                                    roof service needs</a></h3>
+                            <div class="blog-one__btn-box">
+                                <a href="blog-details.php" class="blog-one__btn thm-btn-two">Read more<span
+                                        class="icon-dubble-arrow-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog One Single End-->
+                <!--Blog One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="blog-one__single">
+                        <div class="blog-one__img-box">
+                            <div class="blog-one__img">
+                                <img src="assetsfront/images/blog/blog-1-2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="blog-one__content">
+                            <ul class="blog-one__meta list-unstyled">
+                                <li>
+                                    <a href="#"><span class="icon-user"></span>By admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-callender"></span>23 December 2023</a>
+                                </li>
+                            </ul>
+                            <h3 class="blog-one__title"><a href="blog-details.php">Enhance the beau functionality
+                                    of your our service</a></h3>
+                            <div class="blog-one__btn-box">
+                                <a href="blog-details.php" class="blog-one__btn thm-btn-two">Read more<span
+                                        class="icon-dubble-arrow-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog One Single End-->
+                <!--Blog One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-delay="300ms">
+                    <div class="blog-one__single">
+                        <div class="blog-one__img-box">
+                            <div class="blog-one__img">
+                                <img src="assetsfront/images/blog/blog-1-3.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="blog-one__content">
+                            <ul class="blog-one__meta list-unstyled">
+                                <li>
+                                    <a href="#"><span class="icon-user"></span>By admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-callender"></span>23 December 2023</a>
+                                </li>
+                            </ul>
+                            <h3 class="blog-one__title"><a href="blog-details.php">Functionality of your roof with
+                                    our service</a></h3>
+                            <div class="blog-one__btn-box">
+                                <a href="blog-details.php" class="blog-one__btn thm-btn-two">Read more<span
+                                        class="icon-dubble-arrow-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog One Single End-->
+                <!--Blog One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="400ms">
+                    <div class="blog-one__single">
+                        <div class="blog-one__img-box">
+                            <div class="blog-one__img">
+                                <img src="assetsfront/images/blog/blog-1-4.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="blog-one__content">
+                            <ul class="blog-one__meta list-unstyled">
+                                <li>
+                                    <a href="#"><span class="icon-user"></span>By admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-callender"></span>23 December 2023</a>
+                                </li>
+                            </ul>
+                            <h3 class="blog-one__title"><a href="blog-details.php">Enhance the beau functionality
+                                    of your our service</a></h3>
+                            <div class="blog-one__btn-box">
+                                <a href="blog-details.php" class="blog-one__btn thm-btn-two">Read more<span
+                                        class="icon-dubble-arrow-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog One Single End-->
+                <!--Blog One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="500ms">
+                    <div class="blog-one__single">
+                        <div class="blog-one__img-box">
+                            <div class="blog-one__img">
+                                <img src="assetsfront/images/blog/blog-1-5.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="blog-one__content">
+                            <ul class="blog-one__meta list-unstyled">
+                                <li>
+                                    <a href="#"><span class="icon-user"></span>By admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-callender"></span>23 December 2023</a>
+                                </li>
+                            </ul>
+                            <h3 class="blog-one__title"><a href="blog-details.php">Functionality of your roof with
+                                    our service</a></h3>
+                            <div class="blog-one__btn-box">
+                                <a href="blog-details.php" class="blog-one__btn thm-btn-two">Read more<span
+                                        class="icon-dubble-arrow-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog One Single End-->
+                <!--Blog One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-delay="600ms">
+                    <div class="blog-one__single">
+                        <div class="blog-one__img-box">
+                            <div class="blog-one__img">
+                                <img src="assetsfront/images/blog/blog-1-6.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="blog-one__content">
+                            <ul class="blog-one__meta list-unstyled">
+                                <li>
+                                    <a href="#"><span class="icon-user"></span>By admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon-callender"></span>23 December 2023</a>
+                                </li>
+                            </ul>
+                            <h3 class="blog-one__title"><a href="blog-details.php">Trust the experts for all your
+                                    roof service needs</a></h3>
+                            <div class="blog-one__btn-box">
+                                <a href="blog-details.php" class="blog-one__btn thm-btn-two">Read more<span
+                                        class="icon-dubble-arrow-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog One Single End-->
             </div>
         </div>
     </section>
-    <!--News Page End-->
+    <!--Blog Page End-->
+
 @endsection

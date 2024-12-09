@@ -13,20 +13,13 @@ return new class extends Migration
     {
         Schema::create('contact', function (Blueprint $table) {
             $table->id();
-            $table->string('path_contact')->nullable();
-            $table->string('path')->nullable();
-            $table->string('name')->nullable();
-            $table->string('position')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('phone_number_2')->nullable();
             $table->string('email_address')->nullable();
             $table->string('email_address_2')->nullable();
             $table->string('address')->nullable();
             $table->text('map')->nullable();
-            $table->string('hours')->nullable();
             $table->string('instagram')->nullable();
-            $table->string('tiktok')->nullable();
-            $table->string('facebook')->nullable();
             $table->timestamps();
         });
     }

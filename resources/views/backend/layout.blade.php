@@ -192,14 +192,6 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/why-us') ? 'active' : '' }}">
-                            <a href="{{ route('why-us.index') }}">
-                                <i class="fas fa-thumbs-up"></i>
-                                <p>apartment features</p>
-                                <span class="badge badge-secondary"></span>
-                            </a>
-                        </li>
-
                         <li class="nav-item {{ Request::is('admin-dashboard/services', 'admin-dashboard/services/create', 'admin-dashboard/services/*/edit', 'admin-dashboard/categories-services/create',  'admin-dashboard/categories-services/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('services.index') }}">
                                 <i class="fas fa-hand-holding"></i>
@@ -208,34 +200,10 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/building-services', 'admin-dashboard/building-services/create', 'admin-dashboard/building-services/*/edit', 'admin-dashboard/categories-services/create',  'admin-dashboard/categories-services/*/edit') ? 'active' : '' }}">
-                            <a href="{{ route('building-services.index') }}">
-                                <i class="fas fa-building"></i>
-                                <p>Building Services</p>
-                                <span class="badge badge-secondary"></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item {{ Request::is('admin-dashboard/pricings', 'admin-dashboard/pricings/create', 'admin-dashboard/pricings/*/edit', 'admin-dashboard/categories-pricings/create',  'admin-dashboard/categories-pricings/*/edit') ? 'active' : '' }}">
-                            <a href="{{ route('pricings.index') }}">
-                                <i class="fas fa-wallet"></i>
-                                <p>Pricing</p>
-                                <span class="badge badge-secondary"></span>
-                            </a>
-                        </li>
-
                         <li class="nav-item {{ Request::is('admin-dashboard/gallery', 'admin-dashboard/gallery/create', 'admin-dashboard/gallery/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('gallery.index') }}">
                                 <i class="fas fa-images"></i>
                                 <p>Gallery</p>
-                                <span class="badge badge-secondary"></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item {{ Request::is('admin-dashboard/partner', 'admin-dashboard/partner/create', 'admin-dashboard/partner/*/edit') ? 'active' : '' }}">
-                            <a href="{{ route('partner.index') }}">
-                                <i class="fas fa-handshake"></i>
-                                <p>Partner</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
@@ -265,71 +233,11 @@
                         </li>
 
                         <li class="nav-item {{ Request::is('admin-dashboard/our-team', 'admin-dashboard/our-team.create', 'admin-dashboard/our-team.*.edit') ? 'active' : '' }}">
-                            <a href="{{ route('our-team.index') }}">
-                                <i class="fas fa-user-friends"></i>
-                                <p>Our Team</p>
-                                <span class="badge badge-secondary"></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item {{ Request::is('admin-dashboard/our-team', 'admin-dashboard/our-team.create', 'admin-dashboard/our-team.*.edit') ? 'active' : '' }}">
                             <a href="{{ route('messages.index') }}">
                                 <i class="fas fa-comments"></i>
                                 <p>Message</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#submenu">
-                                <i class="fas fa-bars"></i>
-                                <p>Template DropDown</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="submenu">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a data-bs-toggle="collapse" href="#subnav1">
-                                            <span class="sub-item">DropDown</span>
-                                            <span class="caret"></span>
-                                        </a>
-                                        <div class="collapse" id="subnav1">
-                                            <ul class="nav nav-collapse subnav">
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="sub-item">DropDown</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="sub-item">DropDown</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="collapse" href="#subnav2">
-                                            <span class="sub-item">DropDown 2</span>
-                                            <span class="caret"></span>
-                                        </a>
-                                        <div class="collapse" id="subnav2">
-                                            <ul class="nav nav-collapse subnav">
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="sub-item">DropDown</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sub-item">DropDown 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -371,10 +279,8 @@
                                         <option value="{{ route('slider.index') }}">Slider</option>
                                         <option value="{{ route('about-us.index') }}">About Us</option>
                                         <option value="{{ route('superiority.index') }}">Superiority</option>
-                                        <option value="{{ route('why-us.index') }}">apartment features</option>
                                         <option value="{{ route('services.index') }}">Services</option>
                                         <option value="{{ route('gallery.index') }}">Gallery</option>
-                                        <option value="{{ route('partner.index') }}">Partner</option>
                                         <option value="{{ route('blogs.index') }}">Blog</option>
                                         <!-- Add more options as needed -->
                                     </select>

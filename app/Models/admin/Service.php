@@ -12,24 +12,10 @@ class Service extends Model
     protected $table = 'services';
 
     protected $fillable = [
+        'path',
         'title',
         'overview',
         'description',
-        'category_id',
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(CategoryService::class);
-    }
-
-    public function paths()
-    {
-        return $this->hasMany(ServicePath::class, 'service_id');
-    }
-
-    public function buildingServices()
-    {
-        return $this->hasMany(BuildingService::class);
-    }
 }

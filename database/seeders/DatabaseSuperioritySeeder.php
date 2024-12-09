@@ -14,25 +14,25 @@ class DatabaseSuperioritySeeder extends Seeder
     public function run(): void
     {
         Superiority::Create([
-            'icon' => '<span class="icon-residential"></span>',
+            'icon' => '<span class="icon-setting"></span>',
             'title' => 'Lokasi Strategis dan Akses Mudah',
             'description' => '<p>Areum Parc Bogor terletak di lokasi yang sangat strategis, mudah diakses dari berbagai arah.</p>',
         ]);
 
         Superiority::Create([
-            'icon' => '<span class="icon-sustainable"></span>',
+            'icon' => '<span class="icon-wall"></span>',
             'title' => 'Pemandangan Alam yang Menawan',
             'description' => '<p>Dikelilingi oleh keindahan alam Bogor yang hijau, Areum Parc menawarkan pemandangan alam yang memukau.</p>',
         ]);
 
         Superiority::Create([
-            'icon' => '<span class="icon-world"></span>',
+            'icon' => '<span class="icon-robotic-arm"></span>',
             'title' => 'Desain Bangunan Modern dan Elegan',
             'description' => '<p>Dengan desain bangunan yang modern dan elegan, Areum Parc Bogor menggabungkan kenyamanan dengan estetika.</p>',
         ]);
 
         Superiority::Create([
-            'icon' => '<span class="icon-home-automation"></span>',
+            'icon' => '<span class="icon-engineer"></span>',
             'title' => 'Fasilitas Lengkap dan Berkualitas',
             'description' => '<p>Areum Parc Bogor menawarkan berbagai fasilitas berkualitas, mulai dari area rekreasi.</p>',
         ]);

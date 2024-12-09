@@ -20,17 +20,6 @@ return new class extends Migration
             $table->text('meta_keywords')->nullable();
             $table->text('meta_descriptions')->nullable();
             $table->string('footer')->nullable();
-            $table->string('path_building')->nullable();
-            $table->string('path_building_2')->nullable();
-            $table->string('title_building')->nullable();
-            $table->string('overview_building')->nullable();
-            $table->text('description')->nullable();
-            $table->string('areas_building')->nullable();
-            $table->string('parkings_building')->nullable();
-            $table->string('units_building')->nullable();
-            $table->string('bedrooms_building')->nullable();
-            $table->string('features_building')->nullable();
-            $table->text('youtube_superiority')->nullable();
             $table->timestamps();
         });
     }

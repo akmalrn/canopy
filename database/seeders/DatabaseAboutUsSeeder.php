@@ -14,7 +14,10 @@ class DatabaseAboutUsSeeder extends Seeder
     public function run(): void
     {
         AboutUs::Create([
-            'description' => '<p>Apakah Anda sedang mencari hunian yang nyaman dan strategis? Areum Parc adalah pilihan yang tepat untuk Anda! Dengan lokasi yang prime, fasilitas lengkap, dan desain modern, Areum Parc menawarkan pengalaman tinggal yang tak tertandingi. Jangan lewatkan kesempatan untuk memiliki unit di Areum Parc, hunian yang menawarkan kualitas hidup terbaik.</p>',
+            'path' => 'uploads/aboutus/about.jpg',
+            'title' => 'Mengenal JRC CANOPY: Keunggulan dan Layanan Kami',
+            'overview' => 'JRC CANOPY adalah penyedia solusi kanopi dan struktur peneduh yang berfokus pada kualitas dan desain yang dapat disesuaikan dengan kebutuhan pelanggan.',
+            'description' => 'JRC CANOPY adalah penyedia solusi kanopi dan struktur peneduh yang berfokus pada kualitas dan desain yang dapat disesuaikan dengan kebutuhan pelanggan. Kami menawarkan berbagai jenis kanopi, mulai dari canopy kain, canopy membrane, hingga awning gulung, untuk memenuhi berbagai kebutuhan ruang terbuka, baik untuk komersial, perumahan, maupun industri.',
         ]);
     }
 }
