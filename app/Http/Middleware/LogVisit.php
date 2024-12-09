@@ -25,24 +25,32 @@ class LogVisit
                 $visitedAt = now()->setTimezone($timezone);
 
                 // Meminta data lokasi berdasarkan IP address
-                $apiResponse = Http::timeout(30)  // Timeout after 30 seconds
-                    ->get("http://ip-api.com/json/{$ipAddress}");
+                try {
+                    $apiResponse = Http::timeout(30)->get("http://ip-api.com/json/{$ipAddress}");
 
-                $data = $apiResponse->json();
+                    if ($apiResponse->successful()) {
+                        $data = $apiResponse->json();
 
-                Log::info('IP API Response', $data);
+                        // Menentukan lokasi negara/kota berdasarkan response
+                        $country = isset($data['status']) && $data['status'] === 'success'
+                            ? "{$data['city']}, {$data['regionName']}"
+                            : 'Unknown Location';
+                    } else {
+                        $country = 'Unknown Location';
+                    }
 
-                // Menentukan lokasi negara/kota berdasarkan response
-                $country = isset($data['status']) && $data['status'] === 'success'
-                    ? "{$data['city']}, {$data['regionName']}"
-                    : 'Unknown Location';
+                    Log::info('IP API Response', $data);
 
-                // Menyimpan data kunjungan ke database
-                Visit::create([
-                    'ip_address' => $ipAddress,
-                    'country' => $country,
-                    'visited_at' => $visitedAt,
-                ]);
+                    // Menyimpan data kunjungan ke database
+                    Visit::create([
+                        'ip_address' => $ipAddress,
+                        'country' => $country,
+                        'visited_at' => $visitedAt,
+                    ]);
+                } catch (\Exception $e) {
+                    // Log error jika API gagal
+                    Log::error('IP API Request Failed', ['ip' => $ipAddress, 'error' => $e->getMessage()]);
+                }
             }
         }
 
@@ -53,5 +61,4 @@ class LogVisit
 
         return $response;
     }
-
 }

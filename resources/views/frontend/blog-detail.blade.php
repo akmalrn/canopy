@@ -7,6 +7,7 @@
         <div class="container">
             <div class="page-header__inner">
                 <h2>detail Blog</h2>
+            </div>
                 <div class="thm-breadcrumb__box">
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="{{ route('index') }}">Beranda</a></li>
@@ -14,7 +15,6 @@
                         <li>detail Blog</li>
                     </ul>
                 </div>
-            </div>
         </div>
     </section>
     <!--Page Header End-->
@@ -46,7 +46,7 @@
                                     <div class="icon">
                                         <span class="icon-file"></span>
                                     </div>
-                                    <a href="#">Berita</a>
+                                    <a href="#">{{ $blog->category->category }}</a>
                                 </li>
                             </ul>
                             <h3 class="blog-details__title-1">{{ $blog->title }}</h3>
@@ -91,8 +91,8 @@
                                 </div>
                                 <h3 class="sidebar__title">Search</h3>
                             </div>
-                            <form action="#" class="sidebar__search-form">
-                                <input type="search" placeholder="Search....">
+                            <form action="{{ route('blog.search') }}" method="GET" class="sidebar__search-form">
+                                <input type="search" name="keyword" value="{{ old('keyword', $keyword ?? '') }}" placeholder="Cari blog...">
                                 <button type="submit"><i class="icon-search"></i></button>
                             </form>
                         </div>

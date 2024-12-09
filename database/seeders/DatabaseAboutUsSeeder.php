@@ -15,9 +15,9 @@ class DatabaseAboutUsSeeder extends Seeder
     {
         AboutUs::Create([
             'path' => 'uploads/aboutus/about.jpg',
-            'title' => 'Mengenal JRC CANOPY: Keunggulan dan Layanan Kami',
-            'overview' => 'JRC CANOPY adalah penyedia solusi kanopi dan struktur peneduh yang berfokus pada kualitas dan desain yang dapat disesuaikan dengan kebutuhan pelanggan.',
-            'description' => 'JRC CANOPY adalah penyedia solusi kanopi dan struktur peneduh yang berfokus pada kualitas dan desain yang dapat disesuaikan dengan kebutuhan pelanggan. Kami menawarkan berbagai jenis kanopi, mulai dari canopy kain, canopy membrane, hingga awning gulung, untuk memenuhi berbagai kebutuhan ruang terbuka, baik untuk komersial, perumahan, maupun industri.',
+            'title' => 'Tentang Kami - JBC Canopy Sukabumi',
+            'overview' => 'JBC Canopy Sukabumi adalah perusahaan yang bergerak di bidang penyediaan dan pemasangan canopy berkualitas tinggi di wilayah Sukabumi dan sekitarnya.',
+            'description' => 'JBC Canopy Sukabumi adalah perusahaan yang bergerak di bidang penyediaan dan pemasangan canopy berkualitas tinggi di wilayah Sukabumi dan sekitarnya. Kami mengkhususkan diri dalam menyediakan solusi pelindung yang praktis dan estetis untuk berbagai kebutuhan, mulai dari canopy untuk rumah tinggal, area komersial, hingga bangunan industri.',
         ]);
     }
 }

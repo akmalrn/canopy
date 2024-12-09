@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assetsfront/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
-    <link rel="shortcut icon" href="{{ $configuration->path_logo }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ $configuration->path_logo ?? '' }}" type="image/x-icon">
     <link rel="manifest" href="assetsfront/images/favicons/site.webmanifest" />
     <meta name="description" content="{{ $blog->descriptions ?? $configuration->meta_descriptions ?? '' }}" />
     <meta name="keywords" content="{{ $blog->keywords ?? $configuration->meta_keywords ?? '' }}" />
@@ -67,51 +67,7 @@
 </head>
 
 <body>
-    <!-- /.preloader --> <!-- Start sidebar widget content -->
-    <div class="xs-sidebar-group info-group info-sidebar">
-        <div class="xs-overlay xs-bg-black"></div>
-        <div class="xs-sidebar-widget">
-            <div class="sidebar-widget-container">
-                <div class="widget-heading">
-                    <a href="#" class="close-side-widget">X</a>
-                </div>
-                <div class="sidebar-textwidget">
-                    <div class="sidebar-info-contents">
-                        <div class="content-inner">
-                            <div class="logo">
-                                <a href="{{ route('index') }}"><img src="{{ asset($configuration->path) }}"
-                                        alt="{{ $configuration->website_name }}" /></a>
-                            </div>
-                            <div class="content-box">
-                                <h4>About Us</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
-                                    labore et magna aliqua.</p>
-                            </div>
-                            <div class="form-inner">
-                                <h4>Get a free quote</h4>
-                                <form action="assetsfront/inc/sendemail.php" class="contact-form-validated"
-                                    novalidate="novalidate">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" placeholder="Message..."></textarea>
-                                    </div>
-                                    <div class="form-group message-btn">
-                                        <button type="submit" class="thm-btn form-inner__btn">Submit Now</button>
-                                    </div>
-                                </form>
-                                <div class="result"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- End sidebar widget content -->
     <div class="page-wrapper">
         <header class="main-header">
@@ -121,8 +77,8 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-menu__left">
                                 <div class="main-menu__logo">
-                                    <a href="{{ route('index') }}"><img src="{{ asset($configuration->path) }}" width="100px" height="auto"
-                                            alt="{{ $configuration->website_name }}"></a>
+                                    <a href="{{ route('index') }}"><img src="{{ asset($configuration->path ?? '') }}" width="100px" height="auto"
+                                            alt="{{ $configuration->website_name ?? '' }}" style="border-radius: 20px"></a>
                                 </div>
                             </div>
                             <div class="main-menu__main-menu-box">
@@ -280,7 +236,7 @@
                                 <div class="footer-widget__column footer-widget__about">
                                     <div class="footer-widget__logo text-center">
                                         <a href="{{ route('index') }}"><img
-                                                src="{{ asset($configuration->path ?? '') }}" width="100px" height="auto"
+                                                src="{{ asset($configuration->path ?? '') }}" width="100px" height="auto" style="border-radius: 20px"
                                                 alt="{{ $configuration->website_name ?? '' }}"></a>
                                     </div>
                                     <p class="footer-widget__about-text text-center">{{ $aboutUs->overview ?? '' }}</p>
@@ -350,8 +306,7 @@
                                                     <span class="icon-call"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">+{{ $contact->phone_number ?? '' }},</a> <a
-                                                            href="https://wa.me/{{ $contact->phone_number_2 ?? '' }}" target="blank">+{{ $contact->phone_number_2 ?? '' }}</a></p>
+                                                    <p><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">+{{ $contact->phone_number ?? '' }},</a>
                                                 </div>
                                             </li>
                                         </ul>

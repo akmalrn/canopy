@@ -14,23 +14,23 @@ class DatabaseTestimonialSeeder extends Seeder
     public function run(): void
     {
         TestimonialClient::Create([
-            'path' => 'uploads/testimonialClients/testimonial 1.jpg',
-            'name' => 'client 1',
-            'position' => 'client',
-            'description' => 'Areum Parc Bogor benar-benar memberikan pengalaman yang luar biasa. ',
+            'path' => 'uploads/testimonialClients/testimonial-1.png',
+            'name' => 'Joko',
+            'position' => 'CEO',
+            'description' => 'Sangat Mantap, karena canopy sangat kuat, apalagi jika hujan Lebat, bisa menahannya. ',
         ]);
 
         TestimonialClient::Create([
-            'path' => 'uploads/testimonialClients/testimonial 2.jpg',
-            'name' => 'client 2',
-            'position' => 'client',
+            'path' => 'uploads/testimonialClients/testimonial-1.png',
+            'name' => 'Rani',
+            'position' => 'Sekretaris',
             'description' => 'Kami merasa sangat puas dengan pelayanan yang diberikan, staf yang ramah dan siap membantu setiap kebutuhan kami.',
         ]);
 
         TestimonialClient::Create([
-            'path' => 'uploads/testimonialClients/testimonial 3.jpg',
-            'name' => 'client 3',
-            'position' => 'client',
+            'path' => 'uploads/testimonialClients/testimonial-1.png',
+            'name' => 'Mala',
+            'position' => 'Wakil',
             'description' => 'Fasilitas yang disediakan sangat lengkap dan memanjakan, dengan pemandangan yang menenangkan serta desain yang elegan.',
         ]);
     }

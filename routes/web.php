@@ -54,11 +54,6 @@ Route::middleware(['auth'])->group(function () {
 
     //testimonial
     Route::resource('/admin-dashboard/testimonial-clients', App\Http\Controllers\admin\TestimonialClientController::class);
-
-
-    //message
-    Route::get('/admin-dashboard/message', [App\Http\Controllers\admin\MessageController::class, 'index'])->name('messages.index');
-    Route::post('/admin-dashboard/delete/{id}', [App\Http\Controllers\admin\MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 Route::get('/', function () {
@@ -76,8 +71,6 @@ Route::controller(App\Http\Controllers\FrontendController::class)->group(functio
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/blogs/search', 'search')->name('blog.search');
     Route::get('/blogs/categoryBlog{category_id}', 'categoryBlog')->name('blog.category');
-    Route::post('/message', 'store')->name('message.store');
 
     Route::get('/not-found', 'notFound')->name('not-found');
-
 });

@@ -1,5 +1,5 @@
 @extends('frontend.layouts')
-@section('title', $configuration->title)
+@section('title', $configuration->title ?? '')
 @section('content')
     <!-- Main Sllider Start -->
     <section class="main-slider">
@@ -36,36 +36,7 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="about-one__left  wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                         <div class="about-one__img">
-                            <img src="{{ asset($aboutUs->path) }}" alt="{{ $aboutUs->title }}"
-                                style="max-width: 400px; max-height: 500px; width: 400px; height: 500px;">
-                            <div class="about-one__shape-3">
-                                <img src="assetsfront/images/shapes/about-shape-3.png" alt="">
-                            </div>
-                            <div class="about-one__shape-4">
-                                <img src="assetsfront/images/shapes/about-shape-4.png" alt="">
-                            </div>
-                            <div class="about-one__shape-1">
-                                <img src="assetsfront/images/shapes/about-shape-1.png" alt="">
-                            </div>
-                            <div class="about-one__shape-2">
-                                <img src="assetsfront/images/shapes/about-shape-2.png" alt="">
-                            </div>
-                            <div class="about-one__happy-client">
-                                <div class="about-one__client-img-box">
-                                    <ul class="about-one__client-img-list list-unstyled">
-                                        @foreach ($testimonials as $testimonial)
-                                            <li>
-                                                <div class="about-one__client-img">
-                                                    <img src="{{ asset($testimonial->path) }}" alt="">
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <div class="about-one__happy-client-content">
-                                    <p class="about-one__count-text">Klien Senang</p>
-                                </div>
-                            </div>
+                            <img src="{{ asset($aboutUs->path ?? '') }}" alt="{{ $aboutUs->title ?? '' }}" style="object-fit: cover; width:500px; height:500px;">
                         </div>
                     </div>
                 </div>

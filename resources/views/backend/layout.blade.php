@@ -231,14 +231,6 @@
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
-
-                        <li class="nav-item {{ Request::is('admin-dashboard/our-team', 'admin-dashboard/our-team.create', 'admin-dashboard/our-team.*.edit') ? 'active' : '' }}">
-                            <a href="{{ route('messages.index') }}">
-                                <i class="fas fa-comments"></i>
-                                <p>Message</p>
-                                <span class="badge badge-secondary"></span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>

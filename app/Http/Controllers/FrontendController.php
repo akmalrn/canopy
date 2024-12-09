@@ -79,8 +79,9 @@ class FrontendController extends Controller
 
     public function search(Request $request)
     {
-        // Gabungkan data umum dengan view
-        return view('frontend.blog')->with($this->getCommonData());
+        $keyword = $request->input('keyword');
+        $blogs = Blog::where('title', 'like', '%' . $keyword . '%')->get();
+        return view('frontend.blog', ['blogs' => $blogs, 'keyword' => $keyword])->with($this->getCommonData());
     }
 
     public function detailblog($id)

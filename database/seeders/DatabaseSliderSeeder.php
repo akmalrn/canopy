@@ -14,17 +14,17 @@ class DatabaseSliderSeeder extends Seeder
     public function run(): void
     {
         Slider::create([
-            'path' => 'uploads/sliders/slider1.jpeg',
-            'title' => 'Temukan Pesona Desa Korea',
-            'overview' => 'Temukan Pesona Desa Korea',
-            'description' => 'Temukan Pesona Desa Korea',
+            'path' => 'uploads/sliders/slider1.jpg',
+            'title' => 'Solusi Terbaik untuk Canopy Berkualitas!',
+            'overview' => 'Solusi Terbaik untuk Canopy Berkualitas!',
+            'description' => 'Solusi Terbaik untuk Canopy Berkualitas!',
         ]);
 
         Slider::create([
-            'path' => 'uploads/sliders/slider2.jpeg',
-            'title' => 'Merasakan Keindahan Tradisi Korea',
-            'overview' => 'Merasakan Keindahan Tradisi Korea',
-            'description' => 'Merasakan Keindahan Tradisi Korea',
+            'path' => 'uploads/sliders/slider2.jpg',
+            'title' => 'Canopy Tangguh dengan Sentuhan Elegan',
+            'overview' => 'Canopy Tangguh dengan Sentuhan Elegan',
+            'description' => 'Canopy Tangguh dengan Sentuhan Elegan',
         ]);
     }
 }

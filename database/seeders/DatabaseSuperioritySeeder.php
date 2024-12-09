@@ -15,26 +15,26 @@ class DatabaseSuperioritySeeder extends Seeder
     {
         Superiority::Create([
             'icon' => '<span class="icon-setting"></span>',
-            'title' => 'Lokasi Strategis dan Akses Mudah',
-            'description' => '<p>Areum Parc Bogor terletak di lokasi yang sangat strategis, mudah diakses dari berbagai arah.</p>',
+            'title' => 'Kualitas Bahan Terbaik',
+            'description' => '<p>Kami hanya menggunakan bahan berkualitas tinggi, seperti aluminium, baja, dan kain.</p>',
         ]);
 
         Superiority::Create([
             'icon' => '<span class="icon-wall"></span>',
-            'title' => 'Pemandangan Alam yang Menawan',
-            'description' => '<p>Dikelilingi oleh keindahan alam Bogor yang hijau, Areum Parc menawarkan pemandangan alam yang memukau.</p>',
+            'title' => 'Desain yang Disesuaikan',
+            'description' => '<p>Setiap proyek kami dirancang sesuai dengan kebutuhan dan keinginan pelanggan.</p>',
         ]);
 
         Superiority::Create([
             'icon' => '<span class="icon-robotic-arm"></span>',
-            'title' => 'Desain Bangunan Modern dan Elegan',
-            'description' => '<p>Dengan desain bangunan yang modern dan elegan, Areum Parc Bogor menggabungkan kenyamanan dengan estetika.</p>',
+            'title' => 'Pemasangan Profesional',
+            'description' => '<p>Dengan tenaga ahli yang berpengalaman, kami memastikan pemasangan canopy dilakukan dengan rapi dan tepat waktu.</p>',
         ]);
 
         Superiority::Create([
             'icon' => '<span class="icon-engineer"></span>',
-            'title' => 'Fasilitas Lengkap dan Berkualitas',
-            'description' => '<p>Areum Parc Bogor menawarkan berbagai fasilitas berkualitas, mulai dari area rekreasi.</p>',
+            'title' => 'Layanan Pelanggan Responsif',
+            'description' => '<p>Kepuasan pelanggan adalah prioritas utama kami. Kami siap memberikan konsultasi dan solusi terbaik untuk kebutuhan canopy Anda. </p>',
         ]);
     }
 }
