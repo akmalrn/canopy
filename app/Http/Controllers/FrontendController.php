@@ -6,6 +6,7 @@ use App\Models\admin\AboutUs;
 use App\Models\admin\Blog;
 use App\Models\admin\Configuration;
 use App\Models\admin\Contact;
+use App\Models\admin\Gallery;
 use App\Models\admin\Message;
 use App\Models\admin\Service;
 use App\Models\admin\Slider;
@@ -31,16 +32,21 @@ class FrontendController extends Controller
         $sliders = Slider::all();
         $serviceTotal = Service::count();
         $blogTotal = Blog::count();
-        $testimonials = TestimonialClient::all();
+        $testimonials = TestimonialClient::take(3)->get();
         $superioritys = Superiority::all();
         $services = Service::all();
-        return view('frontend.index', compact('sliders', 'serviceTotal', 'blogTotal', 'testimonials', 'superioritys', 'services'))->with($this->getCommonData());
+        $gallerys = Gallery::all();
+        $blogs = Blog::take(3)->get();
+        $gallery = Gallery::first();
+        return view('frontend.index', compact('sliders', 'serviceTotal', 'blogTotal', 'testimonials', 'superioritys', 'services', 'gallerys', 'blogs', 'gallery'))->with($this->getCommonData());
     }
 
     public function about()
     {
         // Gabungkan data umum dengan view
-        return view('frontend.about')->with($this->getCommonData());
+        $testimonials = TestimonialClient::take(3)->get();
+        $superioritys = Superiority::all();
+        return view('frontend.about', compact('testimonials', 'superioritys'))->with($this->getCommonData());
     }
 
     public function promo()
@@ -52,19 +58,23 @@ class FrontendController extends Controller
     public function services()
     {
         // Gabungkan data umum dengan view
-        return view('frontend.services')->with($this->getCommonData());
+        $services = Service::all();
+        return view('frontend.services', compact('services'))->with($this->getCommonData());
     }
 
-    public function DetailService($category_id)
+    public function DetailService($id)
     {
         // Gabungkan data umum dengan view
-        return view('frontend.service-detail')->with($this->getCommonData());
+        $services = Service::all();
+        $service = Service::findOrFail($id);
+        return view('frontend.service-detail', compact('services',  'service'))->with($this->getCommonData());
     }
 
     public function blog()
     {
         // Gabungkan data umum dengan view
-        return view('frontend.blog')->with($this->getCommonData());
+        $blogs = Blog::orderBy('created_at', 'desc')->get();
+        return view('frontend.blog', compact('blogs'))->with($this->getCommonData());
     }
 
     public function search(Request $request)
@@ -76,7 +86,9 @@ class FrontendController extends Controller
     public function detailblog($id)
     {
         // Gabungkan data umum dengan view
-        return view('frontend.blog-details')->with($this->getCommonData());
+        $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        $blog = Blog::findOrFail($id);
+        return view('frontend.blog-detail', compact('blog', 'blogs'))->with($this->getCommonData());
     }
 
     public function categoryBlog($category_id)
@@ -95,37 +107,5 @@ class FrontendController extends Controller
     {
         // Gabungkan data umum dengan view
         return view('frontend.contact')->with($this->getCommonData());
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'email' => 'required|email|max:255',
-            'phone_number' => 'required|string|max:20',
-        ]);
-
-        $recaptchaSecret = '6LcgYFMqAAAAAKEdfhBqFFdRxLk9_07L-Vea_hMd';
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => $recaptchaSecret,
-            'response' => $recaptchaResponse,
-        ]);
-
-        $result = $response->json();
-
-        if (!$result['success']) {
-            return redirect()->back()->with('error', 'Verifikasi reCAPTCHA gagal. Silakan coba lagi.');
-        }
-
-        try {
-            Message::create($validatedData);
-
-            return redirect()->back()->with('success', 'Data berhasil disimpan!');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
     }
 }

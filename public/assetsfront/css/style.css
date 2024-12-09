@@ -701,7 +701,6 @@ ul {
 .main-menu__main-menu-box {
   position: relative;
   display: block;
-  border: 1px solid var(--maroof-white);
   padding: 0 8px 0;
   border-radius: 30px;
 }

@@ -106,6 +106,46 @@
                                 @enderror
                             </div>
 
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="path_footer" class="form-label">Gambar CTA</label>
+                                    <input type="file" name="path_footer" id="path_footer"
+                                        class="form-control @error('path_footer') is-invalid @enderror"
+                                        onchange="previewImage('path_footer', 'path_footerPreview')">
+                                    @error('path_footer')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <!-- Cek jika gambar ada di database, tampilkan -->
+                                    @if (isset($configuration->path_footer))
+                                        <img id="path_footerPreview" src="{{ asset($configuration->path_footer) }}" alt="Gambar Lama"
+                                            class="mt-2" style="max-width: 200px;">
+                                    @else
+                                        <img id="path_footerPreview" src="" alt="Preview Gambar" class="mt-2"
+                                            style="max-width: 200px; display: none;">
+                                    @endif
+                                </div>
+
+                                <div class="col-md mb-3">
+                                    <label for="path_footer_background" class="form-label">Gambar CTA background</label>
+                                    <input type="file" name="path_footer_background" id="path_footer_background"
+                                        class="form-control @error('path_footer_background') is-invalid @enderror"
+                                        onchange="previewImage('path_footer_background', 'path_footer_backgroundPreview')">
+                                    @error('path_footer_background')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <!-- Cek jika gambar ada di database, tampilkan -->
+                                    @if (isset($configuration->path_footer_background))
+                                        <img id="path_footer_backgroundPreview" src="{{ asset($configuration->path_footer_background) }}" alt="Gambar Lama"
+                                            class="mt-2" style="max-width: 200px;">
+                                    @else
+                                        <img id="path_footer_backgroundPreview" src="" alt="Preview Gambar" class="mt-2"
+                                            style="max-width: 200px; display: none;">
+                                    @endif
+                                </div>
+                            </div>
+
                             <!-- Tombol Submit -->
                             <button type="submit" class="btn btn-primary w-100">Save</button>
                         </form>

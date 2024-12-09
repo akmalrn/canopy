@@ -14,8 +14,10 @@ class DatabaseConfigurationSeeder extends Seeder
     public function run(): void
     {
         Configuration::create([
-            'path' => 'uploads/configuration/logoareum.png',
-            'path_logo' => 'uploads/configuration/logoareum.png',
+            'path' => 'uploads/configuration/logo.jpg',
+            'path_logo' => 'uploads/configuration/logo.jpg',
+            'path_footer' => 'uploads/configuration/footer.jpg',
+            'path_footer_background' => 'uploads/configuration.background.jpg',
             'website_name' => 'JRC CANOPY',
             'title' => 'JRC Canopy: Solusi Terbaik untuk Kebutuhan Canopy Berkualitas di Seluruh Indonesia',
             'meta_keywords' => 'Canopy kain, Canopy membrane, Awning gulung, Tenda canopy, Canopy murah, Jasa pembuatan canopy, Canopy BSD, Kanopi Gading Serpong, Canopy Tangerang, Canopy Bandung, Canopy daerah khusus DKI Jakarta, dan melayani seluruh Indonesia',

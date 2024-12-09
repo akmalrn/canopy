@@ -19,16 +19,7 @@ class Configuration extends Model
         'meta_keywords',
         'meta_descriptions',
         'footer',
-        'path_building',
-        'path_building_2',
-        'title_building',
-        'overview_building',
-        'description',
-        'areas_building',
-        'parkings_building',
-        'units_buildings',
-        'bedrooms_building',
-        'features_building',
-        'youtube_superiority',
+        'path_footer',
+        'path_footer_background',
     ];
 }

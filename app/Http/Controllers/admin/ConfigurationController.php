@@ -25,17 +25,8 @@ class ConfigurationController extends Controller
             'meta_keywords' => 'nullable|string',
             'meta_descriptions' => 'nullable|string',
             'footer' => 'nullable|string',
-            'path_building' => 'nullable',
-            'path_building_2' => 'nullable',
-            'title_building' => 'nullable',
-            'overview_building' => 'nullable',
-            'description' => 'nullable',
-            'areas_building' => 'nullable',
-            'parkings_building' => 'nullable',
-            'units_building' => 'nullable',
-            'bedrooms_building' => 'nullable',
-            'features_building' => 'nullable',
-            'youtube_superiotiry' => 'nullable',
+            'path_footer' => 'nullable',
+            'path_footer_background' => 'nullable',
         ]);
 
         $data = [
@@ -44,15 +35,6 @@ class ConfigurationController extends Controller
             'meta_keywords' => $request->input('meta_keywords'),
             'meta_descriptions' => $request->input('meta_descriptions'),
             'footer' => $request->input('footer'),
-            'title_building' => $request->input('title_building'),
-            'overview_building' => $request->input('overview_building'),
-            'description' => $request->input('description'),
-            'areas_building' => $request->input('areas_building'),
-            'parkings_building' => $request->input('parkings_building'),
-            'units_building' => $request->input('units_building'),
-            'bedrooms_building' => $request->input('bedrooms_building'),
-            'features_building' => $request->input('features_building'),
-            'youtube_superiotiry' => $request->input('youtube_superiotiry'),
         ];
 
         if ($request->hasFile('path')) {
@@ -79,28 +61,28 @@ class ConfigurationController extends Controller
             $data['path_logo'] = 'uploads/configuration/' . $logoName;
         }
 
-        if ($request->hasFile('path_building')) {
-            $oldPathLogo = Configuration::find(1)->path_building ?? null;
+        if ($request->hasFile('path_footer')) {
+            $oldPathLogo = Configuration::find(1)->path_footer ?? null;
             if ($oldPathLogo && File::exists(($oldPathLogo))) {
                 File::delete(($oldPathLogo));
             }
-            $logo = $request->file('path_building');
+            $logo = $request->file('path_footer');
             $logoName = time() . '_' . $logo->getClientOriginalName();
             $destinationPath = ('uploads/configuration');
             $logo->move($destinationPath, $logoName);
-            $data['path_building'] = 'uploads/configuration/' . $logoName;
+            $data['path_footer'] = 'uploads/configuration/' . $logoName;
         }
 
-        if ($request->hasFile('path_building_2')) {
-            $oldPathLogo = Configuration::find(1)->path_building_2 ?? null;
+        if ($request->hasFile('path_footer_background')) {
+            $oldPathLogo = Configuration::find(1)->path_footer_background ?? null;
             if ($oldPathLogo && File::exists(($oldPathLogo))) {
                 File::delete(($oldPathLogo));
             }
-            $logo = $request->file('path_building_2');
+            $logo = $request->file('path_footer_background');
             $logoName = time() . '_' . $logo->getClientOriginalName();
             $destinationPath = ('uploads/configuration');
             $logo->move($destinationPath, $logoName);
-            $data['path_building_2'] = 'uploads/configuration/' . $logoName;
+            $data['path_footer_background'] = 'uploads/configuration/' . $logoName;
         }
 
         Configuration::updateOrCreate(

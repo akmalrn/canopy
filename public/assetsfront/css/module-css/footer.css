@@ -107,7 +107,6 @@
 
 .footer-widget__social {
     position: relative;
-    display: flex;
     align-items: center;
     gap: 20px;
 }

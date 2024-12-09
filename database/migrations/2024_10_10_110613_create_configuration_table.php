@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('meta_keywords')->nullable();
             $table->text('meta_descriptions')->nullable();
             $table->string('footer')->nullable();
+            $table->string('path_footer')->nullable();
+            $table->string('path_footer_background')->nullable();
             $table->timestamps();
         });
     }

@@ -307,23 +307,23 @@
 .main-slider .owl-nav {
     position: absolute;
     top: 50%;
-    right: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    width: 100%;
+    z-index: 1000;
     transform: translateY(-50%);
-    margin: 0 !important;
-    z-index: 100;
+}
+
+.main-slider .owl-nav .owl-prev {
+    left: 20px;
+}
+
+.main-slider .owl-nav .owl-next {
+    right: 20px;
 }
 
 .main-slider .owl-nav .owl-next,
 .main-slider .owl-nav .owl-prev {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    position: absolute;
+    top: 50%;
     z-index: 100;
     width: 60px;
     height: 60px;
@@ -336,6 +336,7 @@
     border-radius: 50%;
     background-color: transparent !important;
     border: 2px solid rgba(var(--maroof-white-rgb), .30) !important;
+    transform: translateY(-50%); /* Agar tombol vertikalnya tepat di tengah */
 }
 
 .main-slider .owl-nav .owl-prev {
@@ -1186,3 +1187,5 @@
 /*--------------------------------------------------------------
   # The End
   --------------------------------------------------------------*/
+
+  

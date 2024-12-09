@@ -11,13 +11,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
     <link rel="shortcut icon" href="{{ $configuration->path_logo }}" type="image/x-icon">
     <link rel="manifest" href="assetsfront/images/favicons/site.webmanifest" />
-    <meta name="description" content="{{ $blog->meta_description ?? $configuration->meta_descriptions ?? '' }}" />
+    <meta name="description" content="{{ $blog->descriptions ?? $configuration->meta_descriptions ?? '' }}" />
     <meta name="keywords" content="{{ $blog->keywords ?? $configuration->meta_keywords ?? '' }}" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+
 
         <link rel="stylesheet" href="{{ asset('assetsfront/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assetsfront/css/animate.min.css') }}" />
@@ -120,7 +121,7 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-menu__left">
                                 <div class="main-menu__logo">
-                                    <a href="{{ route('index') }}"><img src="{{ asset($configuration->path) }}"
+                                    <a href="{{ route('index') }}"><img src="{{ asset($configuration->path) }}" width="100px" height="auto"
                                             alt="{{ $configuration->website_name }}"></a>
                                 </div>
                             </div>
@@ -176,18 +177,17 @@
         <section class="cta-two">
             <div class="container">
                 <div class="cta-two__inner">
-                    <div class="cta-two__bg" style="background-image: url(assetsfront/images/backgrounds/cta-two-bg.jpg);">
+                    <div class="cta-two__bg" style="background-image: url({{ asset($configuration->path_footer_background ?? '') }});">
                     </div>
                     <div class="cta-two__img-and-content">
                         <div class="cta-two__img">
-                            <img src="assetsfront/images/resources/cta-two-img-1.png" alt="">
+                            <img src="{{ asset($configuration->path_footer ?? '') }}" alt="{{ $configuration->website_name ?? '' }}">
                         </div>
                         <div class="cta-two__content">
-                            <h3 class="cta-two__title">One Shingle at a Time</h3>
-                            <p class="cta-two__text">Roof service involves the installation, maintenance, and repair of
-                                roofs for the residential and commercial buildings.the contractors</p>
+                            <h3 class="cta-two__title">Satu Genteng Pada Satu Waktu</h3>
+                            <p class="cta-two__text">Layanan atap melibatkan pemasangan, pemeliharaan, dan perbaikan atap untuk bangunan hunian dan komersial. Kontraktornya</p>
                             <div class="cta-two__btn-box">
-                                <a href="contact.php" class="cta-two__btn thm-btn-two">Contact Us<span
+                                <a href="https://wa.me/{{ $contact->phone_number ?? '' }}" class="cta-two__btn thm-btn-two">Hubungi Kami<span
                                         class="icon-dubble-arrow-right"></span></a>
                             </div>
                         </div>
@@ -252,21 +252,21 @@
         <!-- /.search-popup -->
         <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
             <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
-            <span class="scroll-to-top__text"> Go Back Top</span>
+            <span class="scroll-to-top__text"> Kembali Ke atas</span>
         </a>
 
 
         <!--Site Footer Start-->
         <footer class="site-footer-two">
             <div class="site-footer__bg"
-                style="background-image: url(assetsfront/images/backgrounds/site-footer-bg.png);">
+                style="background-image: url({{ asset('assetsfront/images/backgrounds/site-footer-bg.png') }});">
             </div>
             <div class="site-footer__top">
                 <div class="container">
                     <div class="site-footer__top-inner">
-                        <a href="#" class="site-footer__top-content">Get In <span> Touch</span>
+                        <a href="#" class="site-footer__top-content">Dapatkan Ini <span> Dalam Sentuhan</span>
                             <div class="site-footer__top-arrow">
-                                <img src="assetsfront/images/icon/arrow-up.png" alt="">
+                                <img src="{{ asset('assetsfront/images/icon/arrow-up.png') }}" alt="">
                             </div>
                         </a>
                     </div>
@@ -275,58 +275,55 @@
             <div class="site-footer__middle">
                 <div class="container">
                     <div class="site-footer__middle-inner">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="row d-flex flex-wrap">
+                            <div class="col-xl-3 col-lg-6 col wow fadeInUp" data-wow-delay="100ms">
                                 <div class="footer-widget__column footer-widget__about">
-                                    <div class="footer-widget__logo">
+                                    <div class="footer-widget__logo text-center">
                                         <a href="{{ route('index') }}"><img
-                                                src="assetsfront/images/resources/footer-logo-1.png"
-                                                alt=""></a>
+                                                src="{{ asset($configuration->path ?? '') }}" width="100px" height="auto"
+                                                alt="{{ $configuration->website_name ?? '' }}"></a>
                                     </div>
-                                    <p class="footer-widget__about-text">It is a long established fact that a<br>
-                                        Empowering
-                                        Communities</p>
-                                    <div class="footer-widget__social">
-                                        <a href="#"><span class="icon-facebook-f"></span></a>
-                                        <a href="#"><span class="icon-Vector"></span></a>
-                                        <a href="#"><span class="icon-instagram"></span></a>
-                                        <a href="#"><span class="icon-pinterest"></span></a>
+                                    <p class="footer-widget__about-text text-center">{{ $aboutUs->overview ?? '' }}</p>
+                                    <div class="footer-widget__social text-center">
+                                        <a href="mailto:{{ $contact->email_address ?? '' }}"><span class="icon-envelope"></span></a>
+                                        <a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="_blank"><span class="icon-whatsapp"></span>  </a>
+                                        <a href="{{ $contact->instagram ?? '' }}" target="blank"><span class="icon-instagram"></span></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="col-xl-2 col-lg-6 col wow fadeInUp" data-wow-delay="200ms">
                                 <div class="footer-widget__column footer-widget__services">
                                     <div class="footer-widget__title-box">
-                                        <h3 class="footer-widget__title">Services</h3>
+                                        <h3 class="footer-widget__title">Nav</h3>
                                     </div>
                                     <ul class="footer-widget__services-list list-unstyled">
                                         <li>
-                                            <a href="reliable-roof-repair.php"><span
-                                                    class="icon-angle-left"></span>Roof Renewal</a>
+                                            <a href="{{ route('index') }}"><span
+                                                    class="icon-angle-left"></span>Beranda</a>
                                         </li>
                                         <li>
-                                            <a href="peak-performance-roofing.php"><span
-                                                    class="icon-angle-left"></span>Peak Protection </a>
+                                            <a href="{{ route('about') }}"><span
+                                                    class="icon-angle-left"></span>Tentang Kami </a>
                                         </li>
                                         <li>
-                                            <a href="skyline-roofing-solutions.php"><span
-                                                    class="icon-angle-left"></span>Skyline Roof Care</a>
+                                            <a href="{{ route('services') }}"><span
+                                                    class="icon-angle-left"></span>Layanan</a>
                                         </li>
                                         <li>
-                                            <a href="sure-guard-roofing-services.php"><span
-                                                    class="icon-angle-left"></span>Guardian Roof </a>
+                                            <a href="{{ route('blog') }}"><span
+                                                    class="icon-angle-left"></span>Blog </a>
                                         </li>
                                         <li>
-                                            <a href="top-notch-roofing-restoration.php"><span
-                                                    class="icon-angle-left"></span>Top Notch Roof</a>
+                                            <a href="{{ route('contact') }}"><span
+                                                    class="icon-angle-left"></span>Kontak</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="col-xl-4 col-lg-6 col wow fadeInUp" data-wow-delay="300ms">
                                 <div class="footer-widget__column footer-widget__contact">
                                     <div class="footer-widget__title-box">
-                                        <h3 class="footer-widget__title">Contact</h3>
+                                        <h3 class="footer-widget__title">Kontak</h3>
                                     </div>
                                     <div class="footer-widget__contact-inner">
                                         <ul class="footer-widget__contact-list list-unstyled">
@@ -336,7 +333,7 @@
                                                 </div>
                                                 <div class="text">
                                                     <p><a
-                                                            href="mailto:debra.holt@example.com,">debra.holt@example.com,</a>
+                                                            href="mailto:{{ $contact->email_address ?? '' }}" target="blank">{{ $contact->email_address ?? '' }},</a>
                                                     </p>
                                                 </div>
                                             </li>
@@ -345,7 +342,7 @@
                                                     <span class="icon-location"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p>3891 Ranchview Dr.<br> Richardson</p>
+                                                    <p>{{ $contact->address ?? '' }}</p>
                                                 </div>
                                             </li>
                                             <li>
@@ -353,30 +350,17 @@
                                                     <span class="icon-call"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p><a href="tel:01245789321">01245789321,</a> <a
-                                                            href="tel:012457895146">012457895146</a></p>
+                                                    <p><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">+{{ $contact->phone_number ?? '' }},</a> <a
+                                                            href="https://wa.me/{{ $contact->phone_number_2 ?? '' }}" target="blank">+{{ $contact->phone_number_2 ?? '' }}</a></p>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="footer-widget__column footer-widget__newsletter">
-                                    <div class="footer-widget__title-box">
-                                        <h3 class="footer-widget__title">Newslatter</h3>
-                                    </div>
-                                    <p class="footer-widget__newsletter-text">It is a long established fact that ans
-                                        Empowering Communities</p>
-                                    <form class="footer-widget__newsletter-form mc-form" data-url="MC_FORM_URL"
-                                        novalidate="novalidate">
-                                        <div class="footer-widget__newsletter-form-input-box">
-                                            <input type="email" placeholder="Enter your email" name="EMAIL">
-                                            <button type="submit" class="footer-widget__newsletter-btn"><span
-                                                    class="icon-paper-plane"></span></button>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="col-xl-3 col-lg-6 col wow fadeInUp" data-wow-delay="400ms">
+                                <iframe src="
+                                {{ $contact->map ?? '' }}" frameborder="0"></iframe>
                             </div>
                         </div>
                     </div>
@@ -385,11 +369,9 @@
             <div class="site-footer__bottom">
                 <div class="container">
                     <div class="site-footer__bottom-inner">
-                        <p class="site-footer__bottom-text">© themehealer 2024 | All Rights Reserved</p>
+                        <p class="site-footer__bottom-text">{{ $configuration->footer ?? '' }}</p>
                         <ul class="list-unstyled site-footer__bottom-menu">
-                            <li><a href="about.php">Trams & Condition</a></li>
-                            <li><a href="about.php">Privacy Policy</a></li>
-                            <li><a href="about.php">Contact Us</a></li>
+                            <li><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">Kontak Kami</a></li>
                         </ul>
                     </div>
                 </div>
