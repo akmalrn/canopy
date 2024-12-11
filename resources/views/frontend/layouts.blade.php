@@ -67,6 +67,9 @@
 </head>
 
 <body>
+    <a href="https://wa.me/{{ $contact->phone_number ?? '' }}?text=Halo+Admin+Saya+ingin+memesan" target="_blank" class="whatsapp-button" title="Hubungi Kami di WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+      </a>
 
     <!-- End sidebar widget content -->
     <div class="page-wrapper">
