@@ -7,12 +7,14 @@
     <title>@yield('title')</title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assetsfront/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset($configuration->path_logo ?? 'default-icon.png') }}" />
     <link rel="shortcut icon" href="{{ $configuration->path_logo ?? '' }}" type="image/x-icon">
     <link rel="manifest" href="assetsfront/images/favicons/site.webmanifest" />
-    <meta name="description" content="{{ $blog->descriptions ?? $configuration->meta_descriptions ?? '' }}" />
-    <meta name="keywords" content="{{ $blog->keywords ?? $configuration->meta_keywords ?? '' }}" />
+    <meta name="description" content="{{ $blog->descriptions ?? ($configuration->meta_descriptions ?? '') }}" />
+    <meta name="keywords" content="{{ $blog->keywords ?? ($configuration->meta_keywords ?? '') }}" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,56 +22,85 @@
         rel="stylesheet">
 
 
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/animate.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/custom-animate.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/font-awesome-all.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/jarallax.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/jquery.magnific-popup.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/odometer.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/flaticon.css') }}">
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/owl.carousel.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/owl.theme.default.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/nice-select.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/jquery-ui.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/slider.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/footer.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/about.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/sliding-text.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/services.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/counter.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/cta.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/team.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/contact.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/we-serve.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/testimonial.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/project.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/brand.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/faq.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/blog.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/why-we-are.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/video.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/work-process.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/quality-work.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/page-header.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/google-map.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/error.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/coming-soon.css') }}" />
-        <!-- template styles -->
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assetsfront/css/responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/animate.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/custom-animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/font-awesome-all.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/jarallax.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/jquery.magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/odometer.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/owl.theme.default.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/nice-select.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/jquery-ui.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/slider.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/footer.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/about.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/sliding-text.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/services.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/counter.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/cta.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/team.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/contact.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/we-serve.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/testimonial.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/project.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/brand.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/faq.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/blog.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/why-we-are.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/video.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/work-process.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/quality-work.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/page-header.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/google-map.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/error.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/module-css/coming-soon.css') }}" />
+    <!-- template styles -->
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetsfront/css/responsive.css') }}" />
 
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-button img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
 </head>
 
 <body>
-    <a href="https://wa.me/{{ $contact->phone_number ?? '' }}?text=Halo+Admin+Saya+ingin+memesan" target="_blank" class="whatsapp-button" title="Hubungi Kami di WhatsApp">
+    <a href="https://wa.me/{{ $contact->phone_number ?? '' }}?text=Halo+Admin+Saya+ingin+memesan" target="_blank"
+        class="whatsapp-button" title="Hubungi Kami di WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-      </a>
+    </a>
 
     <!-- End sidebar widget content -->
     <div class="page-wrapper">
@@ -80,8 +111,10 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-menu__left">
                                 <div class="main-menu__logo">
-                                    <a href="{{ route('index') }}"><img src="{{ asset($configuration->path ?? '') }}" width="100px" height="auto"
-                                            alt="{{ $configuration->website_name ?? '' }}" style="border-radius: 20px"></a>
+                                    <a href="{{ route('index') }}"><img
+                                            src="{{ asset($configuration->path ?? '') }}" width="100px"
+                                            height="auto" alt="{{ $configuration->website_name ?? '' }}"
+                                            style="border-radius: 20px"></a>
                                 </div>
                             </div>
                             <div class="main-menu__main-menu-box">
@@ -90,7 +123,8 @@
                                     <li class="dropdown">
                                         <a href="{{ route('index') }}">Beranda </a>
                                         <ul>
-                                            <li class="{{ request()->routeIs('index') ? 'current' : '' }}"><a href="{{ route('index') }}">Beranda</a></li>
+                                            <li class="{{ request()->routeIs('index') ? 'current' : '' }}"><a
+                                                    href="{{ route('index') }}">Beranda</a></li>
                                         </ul>
                                     </li>
                                     <li class="{{ request()->routeIs('about') ? 'current' : '' }}">
@@ -99,13 +133,15 @@
                                     <li class="dropdown">
                                         <a href="#">Layanan</a>
                                         <ul>
-                                            <li class="{{ request()->routeIs('services') ? 'current' : '' }}"><a href="{{ route('services') }}">Layanan Kami</a></li>
+                                            <li class="{{ request()->routeIs('services') ? 'current' : '' }}"><a
+                                                    href="{{ route('services') }}">Layanan Kami</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a href="#">Blog</a>
                                         <ul>
-                                            <li class="{{ request()->routeIs('blog') ? 'current' : '' }}"><a href="{{ route('blog') }}">Blog</a></li>
+                                            <li class="{{ request()->routeIs('blog') ? 'current' : '' }}"><a
+                                                    href="{{ route('blog') }}">Blog</a></li>
                                         </ul>
                                     </li>
                                     <li class="{{ request()->routeIs('contact') ? 'current' : '' }}">
@@ -114,9 +150,7 @@
                                 </ul>
                             </div>
                             <div class="main-menu__right">
-                                <button
-                                    class="btn"
-                                    onclick="location.href='URL_HUBUNGI_KAMI';"
+                                <button class="btn" onclick="location.href='URL_HUBUNGI_KAMI';"
                                     style="background-color: #E63A27; color: white; padding: 15px 30px; border-radius: 12px; border: none; font-size: 16px;">
                                     Hubungi Kami
                                 </button>
@@ -136,17 +170,21 @@
         <section class="cta-two">
             <div class="container">
                 <div class="cta-two__inner">
-                    <div class="cta-two__bg" style="background-image: url({{ asset($configuration->path_footer_background ?? '') }});">
+                    <div class="cta-two__bg"
+                        style="background-image: url({{ asset($configuration->path_footer_background ?? '') }});">
                     </div>
                     <div class="cta-two__img-and-content">
                         <div class="cta-two__img">
-                            <img src="{{ asset($configuration->path_footer ?? '') }}" alt="{{ $configuration->website_name ?? '' }}">
+                            <img src="{{ asset($configuration->path_footer ?? '') }}"
+                                alt="{{ $configuration->website_name ?? '' }}">
                         </div>
                         <div class="cta-two__content">
                             <h3 class="cta-two__title">Satu Genteng Pada Satu Waktu</h3>
-                            <p class="cta-two__text">Layanan atap melibatkan pemasangan, pemeliharaan, dan perbaikan atap untuk bangunan hunian dan komersial. Kontraktornya</p>
+                            <p class="cta-two__text">Layanan atap melibatkan pemasangan, pemeliharaan, dan perbaikan
+                                atap untuk bangunan hunian dan komersial. Kontraktornya</p>
                             <div class="cta-two__btn-box">
-                                <a href="https://wa.me/{{ $contact->phone_number ?? '' }}" class="cta-two__btn thm-btn-two">Hubungi Kami<span
+                                <a href="https://wa.me/{{ $contact->phone_number ?? '' }}"
+                                    class="cta-two__btn thm-btn-two">Hubungi Kami<span
                                         class="icon-dubble-arrow-right"></span></a>
                             </div>
                         </div>
@@ -162,8 +200,8 @@
                 <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
                 <div class="logo-box">
-                    <a href="{{ route('index') }}" aria-label="logo image"><img src="assetsfront/images/resources/logo-1.png"
-                            width="140" alt="" /></a>
+                    <a href="{{ route('index') }}" aria-label="logo image"><img
+                            src="assetsfront/images/resources/logo-1.png" width="140" alt="" /></a>
                 </div>
                 <!-- /.logo-box -->
                 <div class="mobile-nav__container"></div>
@@ -239,14 +277,19 @@
                                 <div class="footer-widget__column footer-widget__about">
                                     <div class="footer-widget__logo text-center">
                                         <a href="{{ route('index') }}"><img
-                                                src="{{ asset($configuration->path ?? '') }}" width="100px" height="auto" style="border-radius: 20px"
+                                                src="{{ asset($configuration->path ?? '') }}" width="100px"
+                                                height="auto" style="border-radius: 20px"
                                                 alt="{{ $configuration->website_name ?? '' }}"></a>
                                     </div>
-                                    <p class="footer-widget__about-text text-center">{{ $aboutUs->overview ?? '' }}</p>
+                                    <p class="footer-widget__about-text text-center">{{ $aboutUs->overview ?? '' }}
+                                    </p>
                                     <div class="footer-widget__social text-center">
-                                        <a href="mailto:{{ $contact->email_address ?? '' }}"><span class="icon-envelope"></span></a>
-                                        <a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="_blank"><span class="icon-whatsapp"></span>  </a>
-                                        <a href="{{ $contact->instagram ?? '' }}" target="blank"><span class="icon-instagram"></span></a>
+                                        <a href="mailto:{{ $contact->email_address ?? '' }}"><span
+                                                class="icon-envelope"></span></a>
+                                        <a href="https://wa.me/{{ $contact->phone_number ?? '' }}"
+                                            target="_blank"><span class="icon-whatsapp"></span> </a>
+                                        <a href="{{ $contact->instagram ?? '' }}" target="blank"><span
+                                                class="icon-instagram"></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -269,8 +312,8 @@
                                                     class="icon-angle-left"></span>Layanan</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('blog') }}"><span
-                                                    class="icon-angle-left"></span>Blog </a>
+                                            <a href="{{ route('blog') }}"><span class="icon-angle-left"></span>Blog
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('contact') }}"><span
@@ -291,8 +334,8 @@
                                                     <span class="icon-envelope"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p><a
-                                                            href="mailto:{{ $contact->email_address ?? '' }}" target="blank">{{ $contact->email_address ?? '' }},</a>
+                                                    <p><a href="mailto:{{ $contact->email_address ?? '' }}"
+                                                            target="blank">{{ $contact->email_address ?? '' }},</a>
                                                     </p>
                                                 </div>
                                             </li>
@@ -309,7 +352,8 @@
                                                     <span class="icon-call"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">+{{ $contact->phone_number ?? '' }},</a>
+                                                    <p><a href="https://wa.me/{{ $contact->phone_number ?? '' }}"
+                                                            target="blank">+{{ $contact->phone_number ?? '' }},</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -318,7 +362,8 @@
                             </div>
                             <div class="col-xl-3 col-lg-6 col wow fadeInUp" data-wow-delay="400ms">
                                 <iframe src="
-                                {{ $contact->map ?? '' }}" frameborder="0"></iframe>
+                                {{ $contact->map ?? '' }}"
+                                    frameborder="0"></iframe>
                             </div>
                         </div>
                     </div>
@@ -329,7 +374,8 @@
                     <div class="site-footer__bottom-inner">
                         <p class="site-footer__bottom-text">{{ $configuration->footer ?? '' }}</p>
                         <ul class="list-unstyled site-footer__bottom-menu">
-                            <li><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">Kontak Kami</a></li>
+                            <li><a href="https://wa.me/{{ $contact->phone_number ?? '' }}" target="blank">Kontak
+                                    Kami</a></li>
                         </ul>
                     </div>
                 </div>
