@@ -112,7 +112,7 @@
                             <div class="main-menu__left">
                                 <div class="main-menu__logo">
                                     <a href="{{ route('index') }}"><img
-                                            src="{{ asset($configuration->path ?? '') }}" width="100px"
+                                            src="{{ asset($configuration->path ?? '') }}" width="150px"
                                             height="auto" alt="{{ $configuration->website_name ?? '' }}"
                                             style="border-radius: 20px"></a>
                                 </div>

@@ -9,8 +9,6 @@
                     <div class="main-slider__bg" style="background-image: url({{ asset($slider->path) }});">
                     </div><!-- /.slider-one__bg -->
                     <div class="main-slider__shape-1"></div>
-                    <div class="main-slider__shape-2"
-                        style="background-image: url(assetsfront/images/shapes/main-slider-shape-2.png);"></div>
                     <div class="container">
                         <div class="main-slider__content">
                             <div class="main-slider__content-shape-1">
