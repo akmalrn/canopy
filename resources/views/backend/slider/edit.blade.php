@@ -51,7 +51,7 @@
                                             <!-- Pratinjau gambar lama jika ada -->
                                             @if($slider->path)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('uploads/sliders/' . $slider->path) }}" alt="Current Slider Image" class="img-thumbnail" width="200">
+                                                    <img src="{{ asset($slider->path) }}" alt="Current Slider Image" class="img-thumbnail" width="200">
                                                 </div>
                                             @endif
                                             <!-- Tempat pratinjau gambar baru yang dipilih -->

@@ -40,7 +40,7 @@ class TestimonialClientController extends Controller
             'name' => $request->name,
             'position' => $request->position,
             'description' => $request->description,
-            'path' => $imageName,
+            'path' => 'uploads/testimonialClients/' .$imageName,
         ]);
 
         // Redirect dengan pesan sukses
@@ -73,7 +73,7 @@ class TestimonialClientController extends Controller
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(('uploads/testimonialClients'), $imageName);
 
-            $data->path = $imageName;
+            $data->path = 'uploads/testimonialClients/' .$imageName;
         }
 
         $data->update([

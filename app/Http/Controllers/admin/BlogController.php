@@ -52,7 +52,7 @@ class BlogController extends Controller
             'keywords' => $request->keywords,
             'descriptions' => $request->descriptions,
             'category_id' => $request->category_id,
-            'path' => $imageName ?? null,
+            'path' => 'uploads/blogs/' . $imageName ?? null,
         ]);
 
         return redirect()->route('blogs.index')->with('success', 'Blog added successfully.');
@@ -89,7 +89,7 @@ class BlogController extends Controller
             $image = $request->file('path');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(('uploads/blogs'), $imageName);
-            $blog->path = $imageName;
+            $blog->path = 'uploads/blogs/' . $imageName;
         }
 
         $blog->update([
@@ -109,7 +109,7 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
 
         if ($blog->path) {
-            $imagePath = ('uploads/blogs/' . $blog->path);
+            $imagePath = ($blog->path);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }

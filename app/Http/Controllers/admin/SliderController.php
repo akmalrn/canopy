@@ -41,10 +41,9 @@ class SliderController extends Controller
             'title' => $request->title,
             'overview' => $request->overview,
             'description' => $request->description,
-            'path' => $imageName,
+            'path' => 'uploads/sliders/' . $imageName,
         ]);
 
-        // Redirect dengan pesan sukses
         return redirect()->route('slider.index')->with('success', 'Data saved successfully.');
     }
 
@@ -73,7 +72,6 @@ class SliderController extends Controller
             $image = $request->file('path');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(('uploads/sliders'), $imageName);
-
             $data->path = $imageName;
         }
 
@@ -81,6 +79,7 @@ class SliderController extends Controller
             'title' => $request->title,
             'overview' => $request->overview,
             'description' => $request->description,
+            'path' => 'uploads/sliders/' . $data->path,
         ]);
 
         return redirect()->route('slider.index')->with('success', 'Data updated successfully.');
@@ -90,8 +89,8 @@ class SliderController extends Controller
     {
         $data = Slider::findOrFail($id);
 
-        if (file_exists(('uploads/sliders/' . $data->path))) {
-            unlink(('uploads/sliders/' . $data->path));
+        if (file_exists(($data->path))) {
+            unlink(($data->path));
         }
 
         $data->delete();

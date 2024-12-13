@@ -65,7 +65,7 @@
                                             <!-- Current image preview -->
                                             @if ($blog->path)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('uploads/blogs/' . $blog->path) }}" alt="Current blog Image" class="img-thumbnail" width="200">
+                                                    <img src="{{ asset($blog->path) }}" alt="Current blog Image" class="img-thumbnail" width="200">
                                                 </div>
                                             @endif
                                             <img id="pathPreview" src="#" alt="Image Preview" class="img-thumbnail mt-2" style="display: none; width: 200px;">
